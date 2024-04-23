@@ -1,4 +1,6 @@
 require_once 'PHPMailer/PHPMailerAutoload.php';
+
+
 if(isset($_POST['emainsend']))
 {
   //#1
@@ -9,13 +11,13 @@ if(isset($_POST['emainsend']))
   //#2
   $mail = new PHPMailer;
   $mail->isSMTP();
-  $mail->Host = 'smtp@gmail.com';
+  $mail->Host = 'Host của SMTP';
   $mail->Port = 465;
   $mail->SMTPSecure = 'tls';
   $mail->SMTPAuth = true;
   $mail->Username = 'trqminhdl@gmail.com';
-  $mail->Password = '@minh2007';
-  $mail->FromName = "Demo Send Mail";
+  $mail->Password = '@Minh2007';
+  $mail->FromName = "Hello";
 
   //#3
   $mail->addAddress($to_id);
@@ -25,11 +27,13 @@ if(isset($_POST['emainsend']))
   //#4
   if (!$mail->send()) {
     $error = "Lỗi: " . $mail->ErrorInfo;
-    echo '<p>'.$error.'</p>';
+    echo 'Failed';
   }
   else {
-    echo '<p>Đã gửi!</p>';
+    echo 'success';
   }
 }
+
 else{
   echo '<p>Vui lòng nhập dữ liệu</p>';
+}
