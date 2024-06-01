@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
-    
-    <link href="path/to/css/shCore.css" rel="stylesheet" type="text/css" />
-    <link href="path/to/css/shThemeDefault.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
     <link href="style.css" rel="stylesheet">
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -36,32 +30,6 @@
         }
         div.a {
             text-align: center;
-        }
-        .copy-button {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            background: #4CAF50; /* Màu nền xanh lá */
-            border: none;
-            color: white; /* Màu chữ trắng */
-            padding: 8px 16px; /* Tăng kích thước padding */
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 1em; /* Tăng kích thước chữ */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Đổ bóng */
-            transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu */
-        }
-
-        .copy-button:hover {
-            background-color: #45a049; /* Màu nền khi hover */
-        }
-
-        .copy-button:active {
-            background-color: #3e8e41; /* Màu nền khi click */
-        }
-
-        .code-container {
-            position: relative;
         }
     </style>
     <meta property="og:title" content="Trần Quang Minh" />
@@ -172,37 +140,6 @@
         </form>
     </div>
 </div>
-<div class="code-container">
-    <button class="copy-button" onclick="copyCode(this)">Copy</button>
-    <div>
-        <pre><code class="language-cpp">
-            #include<a><</a><b>iostream</b><c>></c>
-            using namespace std;
-            int main() {
-                // Code này bằng C++
-                cout << "Cảm ơn cậu vì đã ghé thăm Wiki xàm xí của tớ nhé!" << "\n";
-                cout << "Nếu cậu có ý kiến phản hồi, hoặc câu chuyện cần chia sẻ, hãy gửi thư cho tớ." << "\n";
-                cout << "Have a good day!";
-                return 0;
-            }
-        </code></pre>
-    </div>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-cpp.min.js"></script>
-    <script>
-    function copyCode(button) {
-        var code = button.nextElementSibling.innerText;
-        navigator.clipboard.writeText(code).then(function() {
-            button.innerText = "Copied!";
-            setTimeout(function() {
-                button.innerText = "Copy";
-            }, 2000);
-        }).catch(function(error) {
-            console.error("Could not copy text: ", error);
-        });
-    }
-    </script>
 </body>
 <footer>
     <div>©2024 Trần Quang Minh(voyalphageR) All Rights Reserved </div>
