@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+    <link href="styles.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <style>
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+        .mySlides {
+            display: none;
+        }
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+        @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
+        .navbar {
+            overflow: hidden;
+            background-color: #458ee1;
+        }
+        .navbar a {
+            float: right;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        header {
+            color: white;
+            text-align: center;
+            padding: 5px;
+        }
+        body, html {
+            background-color: #458ee1;
+            height: 100%;
+            margin: 0;
+            font: 400 15px/1.8 "Times New Roman", sans-serif;
+            color: #458ee1;
+        }
+
+        .bgimg{
+            background-image: url('hoa.jpg');
+            min-height: 100%;
+            margin : 0;
+            background-position: center;
+            background-size: cover;
+        }
+        div.a {
+            text-align: center;
+        }
+        #myBtn {
+            display: none; /* Ẩn nút khi trang web được tải */
+            position: fixed; /* Vị trí cố định trên màn hình */
+            bottom: 20px; /* Khoảng cách từ dưới cùng */
+            right: 30px; /* Khoảng cách từ phải */
+            z-index: 99; /* Đảm bảo nút nằm trên các phần tử khác */
+            border: none; /* Loại bỏ viền */
+            outline: none; /* Loại bỏ đường viền khi click */
+            background-color: #000000; /* Màu nền */
+            color: white; /* Màu chữ */
+            cursor: pointer; /* Hiển thị con trỏ như một tay khi di chuyển qua */
+            padding: 15px; /* Đệm xung quanh nội dung */
+            border-radius: 10px; /* Bo góc */
+    }
+    #myBtn:hover {
+        background-color: #555; /* Màu nền khi hover */
+    }
+    #ai-copilot-container {
+        position: fixed;
+        bottom: 100px;
+        right: 20px;
+        z-index: 1000;
+    }
+
+    #ai-copilot-chat {
+        width: 300px;
+        height: 400px;
+        background-color: #f1f1f1;
+        border: 1px solid #d4d4d4;
+        border-radius: 5px;
+        display: none;
+    }
+    #ai-copilot-chat.show {
+        display: block;
+    }
+    #chat-header {
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        border-radius: 5px 5px 0 0;
+    }
+    #chat-header #close-chat {
+        float: right;
+        cursor: pointer;
+    }
+    #chat-messages {
+        height: 340px;
+        overflow-y: auto;
+        padding: 10px;
+        background: white;
+    }
+    #user-input {
+        width: calc(100% - 20px);
+        padding: 5px;
+        margin: 10px;
+        border: 1px solid #d4d4d4;
+    }
+    #ai-copilot-btn {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    </style>
+    <meta property="og:title" content="Trần Quang Minh" />
+    <meta property="og:description" content="Thông tin về Trần Quang Minh" />
+    <meta property="og:image" content="" />
+    <meta property="og:url" content="colonelminh.github.io" />
+</head>
+<title>Trần Quang Minh</title>
+<header>
+    <a href="https://colonelminh.github.io/" style="color: white; text-decoration: none;">
+        <div class="a">
+            <font size="+3">Wiki xàm về Đại tá Minh:))</font>
+            <hr  width="100%" align="center" />
+        </div>
+    
+<body>
+
+<div class="navbar">
+    <a href="#algorithm-web">Giao lưu giải thuật</a>
+    <a href="#pictures">Vài bức ảnh sến</a>
+    <a href="#birthday-card">Thiệp sinh nhật (quay lại trang web này vào 16 tháng 1 nhé)</a>
+    <a href="#message">Gửi tin nhắn</a>
+    <a href="#skills">Kỹ năng</a>
+    <a href="#contact">Thông tin liên hệ</a>
+    <a href="#achievements">Thành tích</a>
+    <a href="#about">Về tôi</a>
+</div>
+       
+<div class="bgimg">
+    <div class="a" style="color:#000000">
+        <font size="+3"> Trần Quang Minh </font>
+        <div>Ngày sinh:16/01/2007</div>
+        <div>Relationship status: single</div>
+        <div>Biệt danh: Minh Quang, Bốn mắt, Mọt sách, Đại tá Minh,...</li>
+        <div>Nơi ở hiện tại: Thôn Tân Xuyên, xã Tân Dân, huyện Đức Thọ, tỉnh Hà Tĩnh 45728, Việt Nam</div>
+        <div>Sở trường: chơi cờ, chơi piano</div>
+        <div>Sở thích: đọc sách, nhiếp ảnh, tìm hiểu về lịch sử</div>
+        <div>Tính cách: vui vẻ, nói chuyện hơi xàm xàm tí; hơi mất thời gian để quen bạn mới:((</div>
+        <div>
+            <a href="https://photos.app.goo.gl/NKFPPa4CZ7hyNy4m7">Thư viện ảnh: "Minh ngố và những người bạn:)))"</a>
+        </div>
+        <div id="contact">
+            <font size="+1">Thông tin liên hệ:</font>
+        </div>
+        <div>
+            <a href="mailto:tranquangminhduclap@gmail.com">Gmail</a>
+        </div>
+        <div>
+            <a href="https://www.facebook.com/minhtrq007">Facebook</a>
+        </div>
+        <div>
+            <a href="https://www.instagram.com/dai.ta_minh/">Instagram</a>
+        </div>
+        <div>
+            <a href="https://github.com/colonelminh/">Github</a>
+        </div>
+        <div>Số điện thoại:
+            <a href="tel:0386175228">0386 175 228</a>
+        </div>
+            <a href="https://codeforces.com/profile/voyalphageR">Codeforces</a>
+        </div>    
+        <font size="+3"> Thành tích nổi bật: </font>
+        <div id="achievements">Giải nhất HSG môn Toán</div>
+        <div>Giải ba HSG tỉnh Khoa học-Kỹ thuật</div>
+        <div>Giải nhì HSG môn Tin học</div>
+        <div>Thư tuyên dương của Tổng Giám đốc Tập đoàn Điện lực Việt Nam</div>
+        <div>Giải ba HSG tỉnh môn Tiếng Anh</div>
+        <div>Giải khuyến khích Tin học trẻ không chuyên</div>
+        <div>Trình độ ngoại ngữ: tiếng Anh B1, tiếng Nga TORFL-I/B1</div>
+        <div>Trúng tuyển tại Đại học Bách khoa Saint Petersburg mang tên Peter đại đế (top 8 nước Nga) và Đại học bang Nam Ural (top 14 nước Nga)</div>
+    </div>
+    <div class="a" style="color:#ffffff" id="skills">        
+        <font size="+3"> Kỹ năng:</font>
+        <li>Ngôn ngữ lập trình: Có khả năng lập trình với các ngôn ngữ như Python, Java, JavaScript, C++, C#, Ruby, PHP</div>
+        <li>Front-end Development (Phát triển giao diện người dùng):
+            Có kiến thức về HTML, CSS và JavaScript.
+            Sử dụng các framework phổ biến như React, Angular, hoặc Vue.js để xây dựng giao diện người dùng hiện đại và tương tác.</li>
+        <li>Back-end Development (Phát triển phía sau):
+            Hiểu về các ngôn ngữ như Node.js, Python (Flask, Django), Java (Spring), hoặc Ruby (Rails) để xây dựng các hệ thống back-end.
+            Có kỹ năng làm việc với cơ sở dữ liệu như MySQL, PostgreSQL, MongoDB.</li>
+        <li>Công nghệ Cloud:
+            Có hiểu biết về các dịch vụ đám mây như Amazon Web Services (AWS), Microsoft Azure, Google Cloud Platform (GCP).
+            Có kinh nghiệm triển khai, quản lý ứng dụng trên môi trường đám mây.</li>
+        <li>Kiến thức về DevOps:
+            Hiểu biết về các công cụ như Docker, Kubernetes để triển khai và quản lý hệ thống.
+            Có kỹ năng tự động hóa các quy trình với các công cụ như Jenkins, GitLab CI/CD.</li>
+        <li>Kiến thức bảo mật thông tin:
+            Có hiểu biết về cơ bản về bảo mật thông tin, bao gồm lỗ hổng bảo mật, mã hóa, và các công nghệ bảo mật thông thường.
+            Có kinh nghiệm triển khai các phương pháp bảo mật, kiểm tra và đánh giá rủi ro.
+            Công nghệ Web và RESTful API:</li> 
+        <li>Hiểu biết về các chuẩn web như HTTP, HTTPS, RESTful API.
+            Có khả năng thiết kế và triển khai các API cho ứng dụng web và di động.</li>    
+        <li>Kỹ năng xử lý dữ liệu và Machine Learning (ML):
+            Có kiến thức về xử lý dữ liệu với Python và các thư viện như Pandas, NumPy.
+            Có khả năng sử dụng các công cụ và framework ML/DL như TensorFlow, PyTorch.</li>
+        <li>Kỹ năng giải quyết vấn đề và logic:
+            Có khả năng phân tích, giải quyết vấn đề và suy luận logic.
+            Biết cách tìm kiếm và áp dụng các giải pháp công nghệ hiệu quả.</li>
+        <li>Kỹ năng làm việc nhóm và giao tiếp:
+            Có khả năng làm việc hiệu quả trong nhóm, giao tiếp và trao đổi ý tưởng.
+            Sẵn sàng học hỏi và thích thử thách trong môi trường công nghệ đổi mới.</li>
+        <font size="+3"> Gửi tin nhắn cho Minh ngố nè:)))</font>
+        <div id=message"">Cảm ơn thư của các bạn rất nhiều!</div>
+        <form action="https://formspree.io/f/mgegrpge" method="POST">
+            <label for="name">Họ tên:</label><br>
+            <input type="text" id="name" name="name" required></br><br>
+            
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+            
+            <label for="message">Nội dung thư:</label><br>
+            <textarea id="message" name="message" rows="4" required></textarea><br><br>
+            
+            <input type="submit" value="Gửi">
+            <p>Lưu ý:
+                <li>Tên của bạn có thể là nickname (nên dễ đoán tí nhé)</li>
+                <li>Nên nhập địa chỉ E-mail hợp lệ để nhận được câu trả lời</li>
+                <li>Mọi hành vi spam, thư có nội dung rác sẽ dẫn đến địa chỉ IP của bạn bị ban trong tương lai</li>
+            </p>
+        </form>
+    </div>
+    <div class="slideshow-container" id="pictures">
+        <div class="mySlides fade">
+            <img src="football team (1).jpg" style="width:40%">
+        </div>
+        <div class="mySlides fade">
+            <img src="zalo2.jpg" style="width:40%">
+        </div>
+        <div class="mySlides fade">
+            <img src="z5350983494891_ebae36be39316d098c1f4122a30482b0 (1).jpg" style="width:40%">
+        </div>
+        <div class="mySlides fade">
+            <img src="minh copy.jpg" style="width:40%">
+    </div>
+    <script>
+        let slideIndex = 0;
+        showSlides();
+        
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 2000); // Thay đổi hình ảnh mỗi 1 giây
+        }
+        </script>
+</div>
+    <div id="birthday-card" class="hidden">
+        <font size="+3">Hôm nay là sinh nhật của Minh ngố đấy!</font>
+        <p>Hãy gửi những lời chúc tốt đẹp tới anh ấy nhé!</p>
+    </div>
+    <canvas id="fireworks-canvas" class="hidden"></canvas>
+    <script src="scripts.js"></script>
+    <script>
+        // Khi người dùng cuộn xuống 20px từ đầu tài liệu, hiển thị nút
+        window.onscroll = function() {scrollFunction()};
+        
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("myBtn").style.display = "block";
+            } else {
+                document.getElementById("myBtn").style.display = "none";
+            }
+        }
+        
+        // Khi người dùng click vào nút, cuộn lên đầu tài liệu
+        function topFunction() {
+            document.body.scrollTop = 0; // Đối với Safari
+            document.documentElement.scrollTop = 0; // Đối với Chrome, Firefox, IE và Opera
+        }
+        </script>
+    <div id="ai-copilot-container">
+        <div id="ai-copilot-chat" class="hide">
+            <div id="chat-header">
+                AI Copilot Chat (đang bảo trì) <span id="close-chat">✖</span>
+            </div>
+            <div id="chat-messages"></div>
+            <input type="text" id="user-input" placeholder="Ask me anything...">
+        </div>
+        <button id="ai-copilot-btn">AI</button>
+    </div>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
+    <script>
+        document.getElementById("ai-copilot-btn").onclick = function() {
+            document.getElementById("ai-copilot-chat").classList.toggle("show");
+        };
+        
+        document.getElementById("close-chat").onclick = function() {
+            document.getElementById("ai-copilot-chat").classList.remove("show");
+        };
+        
+        document.getElementById("user-input").onkeypress = function(e) {
+            if (e.key === "Enter" && this.value.trim() !== "") {
+                var userText = "<div>User: " + this.value + "</div>";
+                document.getElementById("chat-messages").innerHTML += userText;
+                askCopilot(this.value); // Gửi câu hỏi này đến hàm askCopilot
+                this.value = ""; 
+            }
+        };
+        async function askCopilot(question) {
+            const responseElement = document.getElementById("chat-messages");
+            try {
+                const response = await fetch("https://api.openai.com/v1/completions", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer sk-proj-JgaLIHL4FdDDBIfYBfq0T3BlbkFJEgGJdI2rrHmWOajbPtft"
+                    },
+                    body: JSON.stringify({
+                        prompt: question,
+                        max_tokens: 50
+                    })
+                });
+                const data = await response.json();
+                const aiText = "<div>AI Copilot: " + data.choices[0].text.trim() + "</div>";
+                responseElement.innerHTML += aiText;
+            } catch (error) {
+                responseElement.innerHTML += "<div>AI Copilot: Sorry, I couldn't fetch a response.</div>";
+            }
+        }
+    </script>
+    
+</body>
+<footer>
+    <hr  width="100%" align="center" />
+    <div>©2024 Trần Quang Minh(voyalphageR) All Rights Reserved </div>
+    <div>Web mình tự code nên nếu có góp ý hãy gửi thư nhé!</div>
+    <font size="+3">Contact me:</font>
+    <div id="algorithm-web">     
+        <a href="https://www.facebook.com/minhtrq007" target="_blank" style="display: inline-block; background-color: #3b5998; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;">Facebook</a>
+        <a href="https://www.instagram.com/dai.ta_minh/" target="_blank" style="display: inline-block; background-color: #e4405f; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;">Instagram</a>
+        <a href="https://www.threads.net/@dai.ta_minh" target="_blank" style="display: inline-block; background-color: #000000; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;">Threads</a>
+        <a href="mailto:tranquangminhduclap@gmail.com" target="_blank" style="display: inline-block; background-color: #ff0000; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;">Gmail</a>
+        <a href="https://www.github.com/colonelminh" target="_blank" style="display: inline-block; background-color: #000000; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;">Github</a>
+        <a href="https://www.codeforces.com/profile/voyalphageR" target="_blank" style="display: inline-block; background-color: #1f8acb; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;">Codeforces</a>
+        <a href="https://oj.vnoi.info/user/voyalphageR" target="_blank" style="display: inline-block; background-color: #ff0000; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;">VNOI</a>
+        <a href="https://www.hackerrank.com/profile/tranquangminhdu2" target="_blank" style="display: inline-block; background-color: #2ec866; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;">HackerRank</a>
+        <a href="https://atcoder.jp/users/voyalphageR" target="_blank" style="display: inline-block; background-color: #1f8acb; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;">AtCoder</a>
+    </div>
+</footer>
+<script>
+    alert("Chào mừng cậu đến với Wiki xàm của Đại tá Minh:))");
+</script>
+</html>
