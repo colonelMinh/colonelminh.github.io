@@ -2,11 +2,43 @@
 <html>
 <head>
     <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
-    <link href="style.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <style>
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+        .mySlides {
+            display: none;
+        }
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+        @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
+        .navbar {
+            overflow: hidden;
+            background-color: #458ee1;
+        }
+        .navbar a {
+            float: right;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
         header {
             color: white;
             text-align: center;
@@ -30,6 +62,23 @@
         div.a {
             text-align: center;
         }
+        #myBtn {
+            display: none; /* Ẩn nút khi trang web được tải */
+            position: fixed; /* Vị trí cố định trên màn hình */
+            bottom: 20px; /* Khoảng cách từ dưới cùng */
+            right: 30px; /* Khoảng cách từ phải */
+            z-index: 99; /* Đảm bảo nút nằm trên các phần tử khác */
+            border: none; /* Loại bỏ viền */
+            outline: none; /* Loại bỏ đường viền khi click */
+            background-color: #000000; /* Màu nền */
+            color: white; /* Màu chữ */
+            cursor: pointer; /* Hiển thị con trỏ như một tay khi di chuyển qua */
+            padding: 15px; /* Đệm xung quanh nội dung */
+            border-radius: 10px; /* Bo góc */
+    }
+    #myBtn:hover {
+        background-color: #555; /* Màu nền khi hover */
+    }
     </style>
     <meta property="og:title" content="Trần Quang Minh" />
     <meta property="og:description" content="Thông tin về Trần Quang Minh" />
@@ -38,13 +87,25 @@
 </head>
 <title>Trần Quang Minh</title>
 <header>
-    <div class="a">
-        <font size="+3">Wiki xàm về Đại tá Minh:))</font>
-    </div>
+    <a href="https://colonelminh.github.io/" style="color: white; text-decoration: none;">
+        <div class="a">
+            <font size="+3">Wiki xàm về Đại tá Minh:))</font>
+            <hr  width="100%" align="center" />
+        </div>
+    
 <body>
+
+<div class="navbar">
+    <a href="#algorithm-web">Giao lưu giải thuật</a>
+    <a href="#pictures">Vài bức ảnh sến</a>
+    <a href="#birthday-card">Thiệp sinh nhật (return this page on January 16)</a>
+    <a href="#message">Gửi tin nhắn</a>
+    <a href="#skills">Kỹ năng</a>
+    <a href="#contact">Thông tin liên hệ</a>
+    <a href="#achievements">Thành tích</a>
+    <a href="#about">Về tôi</a>
+</div>
        
-
-
 <div class="bgimg">
     <div class="a" style="color:#000000">
         <font size="+3"> Trần Quang Minh </font>
@@ -58,7 +119,7 @@
         <div>
             <a href="https://photos.app.goo.gl/NKFPPa4CZ7hyNy4m7">Thư viện ảnh: "Minh ngố và những người bạn:)))"</a>
         </div>
-        <div>
+        <div id="contact">
             <font size="+1">Thông tin liên hệ:</font>
         </div>
         <div>
@@ -79,7 +140,7 @@
             <a href="https://codeforces.com/profile/voyalphageR">Codeforces</a>
         </div>    
         <font size="+3"> Thành tích nổi bật: </font>
-        <div>Giải nhất HSG môn Toán</div>
+        <div id="achievements">Giải nhất HSG môn Toán</div>
         <div>Giải ba HSG tỉnh Khoa học-Kỹ thuật</div>
         <div>Giải nhì HSG môn Tin học</div>
         <div>Thư tuyên dương của Tổng Giám đốc Tập đoàn Điện lực Việt Nam</div>
@@ -88,7 +149,7 @@
         <div>Trình độ ngoại ngữ: tiếng Anh B1, tiếng Nga TORFL-I/B1</div>
         <div>Trúng tuyển tại Đại học Bách khoa Saint Petersburg mang tên Peter đại đế (top 8 nước Nga) và Đại học bang Nam Ural (top 14 nước Nga)</div>
     </div>
-    <div class="a" style="color:#ffffff">        
+    <div class="a" style="color:#ffffff" id="skills">        
         <font size="+3"> Kỹ năng:</font>
         <li>Ngôn ngữ lập trình: Có khả năng lập trình với các ngôn ngữ như Python, Java, JavaScript, C++, C#, Ruby, PHP</div>
         <li>Front-end Development (Phát triển giao diện người dùng):
@@ -119,7 +180,7 @@
             Có khả năng làm việc hiệu quả trong nhóm, giao tiếp và trao đổi ý tưởng.
             Sẵn sàng học hỏi và thích thử thách trong môi trường công nghệ đổi mới.</li>
         <font size="+3"> Gửi tin nhắn cho Minh ngố nè:)))</font>
-        <div>Cảm ơn thư của các bạn rất nhiều!</div>
+        <div id=message"">Cảm ơn thư của các bạn rất nhiều!</div>
         <form action="https://formspree.io/f/mgegrpge" method="POST">
             <label for="name">Họ tên:</label><br>
             <input type="text" id="name" name="name" required></br><br>
@@ -138,14 +199,69 @@
             </p>
         </form>
     </div>
+    <div class="slideshow-container" id="pictures">
+        <div class="mySlides fade">
+            <img src="football team (1).jpg" style="width:40%">
+        </div>
+        <div class="mySlides fade">
+            <img src="zalo2.jpg" style="width:40%">
+        </div>
+        <div class="mySlides fade">
+            <img src="z5350983494891_ebae36be39316d098c1f4122a30482b0 (1).jpg" style="width:40%">
+        </div>
+        <div class="mySlides fade">
+            <img src="minh copy.jpg" style="width:40%">
+    </div>
+    <script>
+        let slideIndex = 0;
+        showSlides();
+        
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 2000); // Thay đổi hình ảnh mỗi 1 giây
+        }
+        </script>
 </div>
-
+    <div id="birthday-card" class="hidden">
+        <font size="+3">Hôm nay là sinh nhật của Minh ngố đấy!</font>
+        <p>Hãy gửi những lời chúc tốt đẹp tới anh ấy nhé!</p>
+    </div>
+    <canvas id="fireworks-canvas" class="hidden"></canvas>
+    <script src="scripts.js"></script>
+    <script>
+        // Khi người dùng cuộn xuống 20px từ đầu tài liệu, hiển thị nút
+        window.onscroll = function() {scrollFunction()};
+        
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("myBtn").style.display = "block";
+            } else {
+                document.getElementById("myBtn").style.display = "none";
+            }
+        }
+        
+        // Khi người dùng click vào nút, cuộn lên đầu tài liệu
+        function topFunction() {
+            document.body.scrollTop = 0; // Đối với Safari
+            document.documentElement.scrollTop = 0; // Đối với Chrome, Firefox, IE và Opera
+        }
+        </script>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
+    
 </body>
 <footer>
+    <hr  width="100%" align="center" />
     <div>©2024 Trần Quang Minh(voyalphageR) All Rights Reserved </div>
     <div>Web tui tự code nên nếu có góp ý hãy gửi thư cho tớ nha ❤️</div>
     <font size="+3">Contact me:</font>
-    <div>     
+    <div id="algorithm-web">     
         <a href="https://www.facebook.com/minhtrq007" target="_blank" style="display: inline-block; background-color: #3b5998; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;">Facebook</a>
         <a href="https://www.instagram.com/dai.ta_minh/" target="_blank" style="display: inline-block; background-color: #e4405f; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;">Instagram</a>
         <a href="https://www.threads.net/@dai.ta_minh" target="_blank" style="display: inline-block; background-color: #000000; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;">Threads</a>
