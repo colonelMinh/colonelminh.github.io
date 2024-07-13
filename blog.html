@@ -140,54 +140,8 @@
     </div>
 </div>
 <script>
-    document.querySelectorAll('.bgimg').forEach(bg => {
-        bg.addEventListener('mouseover', () => {
-            bg.style.filter = 'brightness(80%)';
-        });
-        bg.addEventListener('mouseout', () => {
-            bg.style.filter = 'brightness(100%)';
-        });
-    });
-
-    document.querySelectorAll('.like-button').forEach((button) => {
-        button.addEventListener('click', (event) => {
-            const likeCount = event.target.querySelector('.like-count');
-            likeCount.textContent = parseInt(likeCount.textContent) + 1;
-        });
-    });
-
-    document.querySelectorAll('.comment-button').forEach((button, index) => {
-        button.addEventListener('click', () => {
-            const commentInput = document.getElementById(`comment-input${index > 0 ? '-' + (index + 1) : ''}`);
-            const commentName = document.getElementById(`comment-name${index > 0 ? '-' + (index + 1) : ''}`);
-            const commentSection = document.querySelectorAll('.comment-section')[index];
-            
-            if (commentInput.value && commentName.value) {
-                const comment = document.createElement('div');
-                comment.className = 'comment-item';
-                comment.innerHTML = `<strong>${commentName.value}:</strong> ${commentInput.value}`;
-                commentSection.appendChild(comment);
-                commentInput.value = '';
-                commentName.value = '';
-            }
-        });
-    });
-
-    document.getElementById('search').addEventListener('input', function() {
-        const searchValue = this.value.toLowerCase();
-        const articles = document.querySelectorAll('.content');
-        articles.forEach(article => {
-            const text = article.getAttribute('data-title').toLowerCase();
-            if (text.includes(searchValue)) {
-                article.style.display = '';
-            } else {
-                article.style.display = 'none';
-            }
-        });
-    });
-</script>
-<script>
     document.addEventListener('DOMContentLoaded', () => {
+        loadLikes();
         loadComments();
 
         document.querySelectorAll('.bgimg').forEach(bg => {
@@ -199,10 +153,14 @@
             });
         });
 
-        document.querySelectorAll('.like-button').forEach((button) => {
+        document.querySelectorAll('.like-button').forEach((button, index) => {
             button.addEventListener('click', (event) => {
                 const likeCount = event.target.querySelector('.like-count');
-                likeCount.textContent = parseInt(likeCount.textContent) + 1;
+                const currentCount = parseInt(likeCount.textContent);
+                likeCount.textContent = currentCount + 1;
+
+                // Save like count to localStorage
+                saveLikeCount(index, currentCount + 1);
             });
         });
 
@@ -254,7 +212,23 @@
             });
         });
     }
+
+    function saveLikeCount(index, count) {
+        localStorage.setItem(`likes-${index}`, count);
+    }
+
+    function loadLikes() {
+        document.querySelectorAll('.like-button').forEach((button, index) => {
+            const likeCount = button.querySelector('.like-count');
+            const savedCount = localStorage.getItem(`likes-${index}`);
+            if (savedCount) {
+                likeCount.textContent = savedCount;
+            }
+        });
+    }
 </script>
+
+
 </body>
 <footer>
     <div>©2024 Trần Quang Minh(voyalphageR) All Rights Reserved </div>
