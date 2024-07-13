@@ -4,13 +4,13 @@ const chatbox = document.querySelector('.chatbox');
 const chatbotToggler = document.querySelector('.chatbot-toggler');
 
 let userMessage;
-const API_KEY = "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";
+const API_KEY = "sk-proj-NMdXvDORUNnmeMxt7IUMT3BlbkFJzyosiEDMiCYBm4npv5Il";
 
 const createChatLi = (message, className) => {
     const chatLi = document.createElement('li');
     chatLi.classList.add("chat", className);
     let chatContent = className === "outgoing" ? `<p>${message}</p>` : `<span class="material-symbols-outlined">🤖</span><p>${message}</p><span></span>`;
-        chatLi.innerHTML = chatContent;
+    chatLi.innerHTML = chatContent;
     return chatLi;
 }
 
@@ -28,14 +28,19 @@ const generateResponse = (incomingChatLi) => {
             model: "gpt-3.5-turbo",
             messages: [{role: "user", content: userMessage}]
         })
-    }
+    };
+
     fetch(API_URL, requestOptions).then(res => res.json()).then(data => {
-        messageElement.textContent = data.choices[0].message.content;
+        if (data.error) {
+            messageElement.textContent = `Error: ${data.error.message}`;
+        } else {
+            messageElement.textContent = data.choices[0].message.content;
+        }
     }).catch(err =>  {
-        messageElement.textContent = "Oops! Something went wrong. Please try again."; 
+        messageElement.textContent = "Oops! Something went wrong. Please try again.";
+        console.error(err); // Log lỗi vào console
    });
 }
-
 
 const handleChat = () => {
     userMessage = chatInput.value.trim();
