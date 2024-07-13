@@ -80,6 +80,23 @@
             border-radius: 5px;
             margin: 10px 0;
         }
+        #myBtn {
+            display: none; /* Ẩn nút khi trang web được tải */
+            position: fixed; /* Vị trí cố định trên màn hình */
+            bottom: 20px; /* Khoảng cách từ dưới cùng */
+            right: 30px; /* Khoảng cách từ phải */
+            z-index: 99; /* Đảm bảo nút nằm trên các phần tử khác */
+            border: none; /* Loại bỏ viền */
+            outline: none; /* Loại bỏ đường viền khi click */
+            background-color: #478fbe; /* Màu nền */
+            color: white; /* Màu chữ */
+            cursor: pointer; /* Hiển thị con trỏ như một tay khi di chuyển qua */
+            padding: 15px; /* Đệm xung quanh nội dung */
+            border-radius: 10px; /* Bo góc */
+        }
+        #myBtn:hover {
+            background-color: #555; /* Màu nền khi hover */
+        }
     </style>
 </head>
 <body>
@@ -227,8 +244,26 @@
         });
     }
 </script>
-
-
+<button onclick="topFunction()" id="myBtn" title="Lên đầu trang">↑</button>
+<script src="scripts.js"></script>
+    <script>
+        // Khi người dùng cuộn xuống 20px từ đầu tài liệu, hiển thị nút
+        window.onscroll = function() {scrollFunction()};
+        
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("myBtn").style.display = "block";
+            } else {
+                document.getElementById("myBtn").style.display = "none";
+            }
+        }
+        
+        // Khi người dùng click vào nút, cuộn lên đầu tài liệu
+        function topFunction() {
+            document.body.scrollTop = 0; // Đối với Safari
+            document.documentElement.scrollTop = 0; // Đối với Chrome, Firefox, IE và Opera
+        }
+    </script>
 </body>
 <footer>
     <div>©2024 Trần Quang Minh(voyalphageR) All Rights Reserved </div>
