@@ -115,6 +115,32 @@
     <input type="text" id="search" placeholder="Tìm kiếm...">
 </div>
 <div class="bgimg">
+    <div class="content" data-title="Góc tào lao"> 
+        <font size="+3">Vĩnh biệt ông cụ</font>
+        <div><small align="center">Ngày 19/07/2024</small></div>
+        <p>Từ nhỏ đến giờ, tớ chỉ thực sự khóc hai lần: đó là lúc ông ngoại và ông cụ mất</p>
+        <p>Tớ đã rất lo lắng từ chiều qua, và khi nghe tin cụ mất, tớ đã khóc rất nhiều</p>
+        <p>Ông cụ như là người cha già thứ hai của Việt Nam</p>
+        <p>Vĩnh biệt cụ, người đốt lò vĩ đại của dân tộc</p>
+        <p>"Cái lò đã nóng lên rồi thì củi tươi vào cũng phải cháy..."</p>
+        <img src="Tong Bi thu.jpg" alt="Lịch hè" width="30%">
+        <div class="like">
+            <button class="like-button">❤️ <span class="like-count">80</span></button>
+        </div>
+        <form action="https://formspree.io/f/xnnanpkp" method="POST">
+            <h3>Bình luận:</h3>
+            <input id="name" type="text" name="name" placeholder="Tên của bạn"><br>
+            <input id="email" type="email" name="email" placeholder="Email của bạn" required><br>
+            <textarea id="message" name="messsage" rows="4" cols="50" placeholder="Nhập bình luận của bạn..." required></textarea><br>
+            <button class="comment-button">Gửi</button>
+            <div class="comment-section">
+                <!-- Comments will be appended here -->
+            </div>
+        </form>
+    </div>
+    <div>
+        <pre></pre>
+    </div>
     <div class="content" data-title="Góc tào lao">
         <font size="+3">Ngày 3: Gloria a Argentina, gloria a España</font>
         <div><small align="center">Ngày 15/07/2024</small></div>
@@ -255,7 +281,7 @@
                     commentName.value = '';
                 }
             });
-        });
+        });   
 
         document.getElementById('search').addEventListener('input', function() {
             const searchValue = this.value.toLowerCase();
