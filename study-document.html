@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .navbar {
+            overflow: hidden;
+            background-color: #458ee1;
+        }
+        .navbar a {
+            float: right;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 10px 15px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        header {
+            color: white;
+            text-align: center;
+            padding: 5px;
+        }
+        body, html {
+            background-color: #458ee1;
+            height: 100%;
+            margin: 0;
+            font: 400 15px/1.8 "Times New Roman", sans-serif;
+            color: #458ee1;
+        }
+        footer {
+            background-color: #458ee1;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 5px;
+        }
+
+        .bgimg{
+            background-image: url('hoa.jpg');
+            min-height: 100%;
+            margin : 0;
+            background-position: center;
+            background-size: cover;
+            text-align: center;
+        }
+        div.a {
+            text-align: center;
+        }
+        #myBtn {
+            display: none; /* Ẩn nút khi trang web được tải */
+            position: fixed; /* Vị trí cố định trên màn hình */
+            bottom: 20px; /* Khoảng cách từ dưới cùng */
+            right: 30px; /* Khoảng cách từ phải */
+            z-index: 99; /* Đảm bảo nút nằm trên các phần tử khác */
+            border: none; /* Loại bỏ viền */
+            outline: none; /* Loại bỏ đường viền khi click */
+            background-color: #000000; /* Màu nền */
+            color: white; /* Màu chữ */
+            cursor: pointer; /* Hiển thị con trỏ như một tay khi di chuyển qua */
+            padding: 15px; /* Đệm xung quanh nội dung */
+            border-radius: 10px; /* Bo góc */
+        }
+        #myBtn:hover {
+            background-color: #555; /* Màu nền khi hover */
+        }
+    </style>
+    <meta property="og:title" content="Trần Quang Minh" />
+    <meta property="og:description" content="Tài liệu học tập miễn phí của Trần Quang Minh" />
+    <meta property="og:image" content="" />
+    <meta property="og:url" content="colonelminh.github.io" />
+    <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trần Quang Minh</title>
+</head>
+<header>
+    <a href="https://colonelminh.github.io/study-document.html" style="color: white; text-decoration: none;">
+        <div class="a">
+            <font size="+3">Tài liệu</font>
+            <hr width="100%" align="center" />
+        </div>
+    </a>
+</header>
+<body>
+    <div class="navbar">
+        <a href="#high-school">Tài liệu ôn thi THPTQG</a>
+        <a href="#secondary-school">Tài liệu THCS</a>
+        <a href="#excellent-student">Tài liệu ôn thi HSG các cấp</a>
+        <a href="#study-support">Tài liệu bổ trợ học tập</a>
+    </div>
+    <div class="bgimg" style="color: black;">
+        <div id="excellent-student">
+            <font size="+3">Tài liệu ôn thi HSG các cấp</font>
+            <li><a href="flatten-2013_Lop_12_14388.pdf" style="color: black; text-decoration: none;">Đề thi HSG tỉnh Hà Tĩnh môn Tin học lớp 12 năm 2012-2013</a></li>
+            <li><a href="flatten-2014_Lop_12_4b7b0.pdf" style="color: black; text-decoration: none;">Đề thi HSG tỉnh Hà Tĩnh môn Tin học lớp 12 năm 2013-2014</a></li>
+            <li><a href="flatten-De_thi_HSG_tin_hoc_lop_11_2015_2016_b54ab.pdf" style="color:#000000; text-decoration: none;">Đề thi HSG tỉnh Hà Tĩnh môn Tin học lớp 11 năm 2015-2016</a></li>
+            <li><a href="flatten-2016_Lop_12_d289f.pdf" style="color: black; text-decoration: none;">Đề thi HSG tỉnh Hà Tĩnh môn Tin học lớp 12 năm 2015-2016</a></li>
+            <li><a href="flatten-nam_2018_2019_40c39.pdf" style="color: black; text-decoration: none;">Đề thi HSG tỉnh Hà Tĩnh môn Tin học lớp 12 năm 2018-2019</a></li>
+            <li><a href="de_2021_2022_eb9e4.pdf" style="color: black; text-decoration: none;">Đề thi HSG tỉnh Hà Tĩnh môn Tin học lớp 12 năm 2021-2022</a></li>
+            <li><a href="De_thi_HSG_Tin_hoc_lop_11_2022_2023_2170d.pdf" style="color: black; text-decoration: none;">Đề thi HSG tỉnh Hà Tĩnh môn Tin học lớp 11 năm 2022-2023</a></li>
+        </div>
+    </div>
+    <button onclick="topFunction()" id="myBtn" title="Lên đầu trang">↑</button>
+
+    <script src="scripts.js"></script>
+    <script src="secure.js"></script>
+
+</body>
+<footer>
+    <hr  width="100%" align="center" />
+    <div>©2024 Trần Quang Minh(voyalphageR) All Rights Reserved </div>
+    <div>Web mình tự code nên nếu có góp ý hãy gửi thư nhé!</div>
+    <font size="+3">Contact me:</font>
+    <div id="algorithm-web">     
+        <a href="https://www.facebook.com/minhtrq007" target="_blank" style="display: inline-block; background-color: #3b5998; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;">Facebook</a>
+        <a href="https://www.instagram.com/dai.ta_minh/" target="_blank" style="display: inline-block; background-color: #e4405f; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;">Instagram</a>
+        <a href="https://www.threads.net/@dai.ta_minh" target="_blank" style="display: inline-block; background-color: #000000; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;">Threads</a>
+        <a href="mailto:tranquangminhduclap@gmail.com" target="_blank" style="display: inline-block; background-color: #ff0000; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;">Gmail</a>
+        <a href="https://www.github.com/colonelminh" target="_blank" style="display: inline-block; background-color: #333; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;">GitHub</a>
+    </div>
+</footer>
+</html>
