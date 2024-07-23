@@ -27,6 +27,7 @@ function checkPassword() {
     } else {
         alert("Mật khẩu không đúng. Liên hệ với tớ tại https://forms.gle/F94L36wYKzaHR8sTA để lấy mật khẩu nếu chưa có). Trang web sẽ đóng lại.");
         window.close();
+        window.location.href = "https://youtu.be/dQw4w9WgXcQ?si=OGiGpjUlPwPcd-I4"; // Thay thế URL này bằng URL mà bạn muốn chuyển hướng khi người dùng nhập sai mật khẩu.
     }
 }
 
