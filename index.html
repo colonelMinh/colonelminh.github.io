@@ -93,7 +93,7 @@
 <header>
     <a href="https://colonelminh.github.io/" style="color: white; text-decoration: none;">
         <div class="a">
-            <font size="+3">Wiki xàm về Đại tá Minh</font>
+            <font size="+3">Wiki xàm về Đại tá Minh:))</font>
             <hr  width="100%" align="center" />
         </div>
     </a>
@@ -117,10 +117,12 @@
     <div class="a" style="color:#000000">
         <font size="+3"> Trần Quang Minh </font>
         <div class="about">Ngày sinh:16/01/2007</div>
-        <div>Học sinh lớp 12 tại THPT Trần Phú - Hà Tĩnh</div>
+        <div>Relationship status: single</div>
+        <div>Biệt danh: Minh Quang, Bốn mắt, Mọt sách, Đại tá Minh,...</li>
         <div>Nơi ở hiện tại: Thôn Tân Xuyên, xã Tân Dân, huyện Đức Thọ, tỉnh Hà Tĩnh 45728, Việt Nam</div>
         <div>Sở trường: chơi cờ, chơi piano</div>
         <div>Sở thích: đọc sách, nhiếp ảnh, tìm hiểu về lịch sử</div>
+        <div>Tính cách: vui vẻ, nói chuyện hơi xàm xàm tí; hơi mất thời gian để quen bạn mới:((</div>
         <div>
             <a href="https://photos.app.goo.gl/NKFPPa4CZ7hyNy4m7">Thư viện ảnh: "Minh ngố và những người bạn:)))"</a>
         </div>
@@ -139,13 +141,11 @@
         <div>
             <a href="https://github.com/colonelminh/">Github</a>
         </div>
-        <div>
-            <a href="https://codeforces.com/profile/voyalphageR">Codeforces</a>
-        </div>  
         <div>Số điện thoại:
             <a href="tel:0386175228">0386 175 228</a>
         </div>
-          
+            <a href="https://codeforces.com/profile/voyalphageR">Codeforces</a>
+        </div>    
         <font size="+3"> Thành tích nổi bật: </font>
         <div id="achievements">Giải nhất HSG môn Toán</div>
         <div>Giải ba HSG tỉnh Khoa học-Kỹ thuật</div>
@@ -154,10 +154,11 @@
         <div>Giải ba HSG tỉnh môn Tiếng Anh</div>
         <div>Giải khuyến khích Tin học trẻ không chuyên</div>
         <div>Trình độ ngoại ngữ: tiếng Anh B1, tiếng Nga TORFL-I/B1</div>
+        <div>Trúng tuyển tại Đại học Bách khoa Saint Petersburg mang tên Peter đại đế (top 8 nước Nga) và Đại học bang Nam Ural (top 14 nước Nga)</div>
     </div>
     <div class="a" style="color:#ffffff" id="skills">        
-        <font size="+3"> Kỹ năng (bịp đấy):</font>
-        <li>Ngôn ngữ lập trình: Có khả năng lập trình với các ngôn ngữ như Python, Java, JavaScript, C++, C#, Ruby, PHP</li>
+        <font size="+3"> Kỹ năng:</font>
+        <li>Ngôn ngữ lập trình: Có khả năng lập trình với các ngôn ngữ như Python, Java, JavaScript, C++, C#, Ruby, PHP</div>
         <li>Front-end Development (Phát triển giao diện người dùng):
             Có kiến thức về HTML, CSS và JavaScript.
             Sử dụng các framework phổ biến như React, Angular, hoặc Vue.js để xây dựng giao diện người dùng hiện đại và tương tác.</li>
@@ -185,7 +186,7 @@
         <li>Kỹ năng làm việc nhóm và giao tiếp:
             Có khả năng làm việc hiệu quả trong nhóm, giao tiếp và trao đổi ý tưởng.
             Sẵn sàng học hỏi và thích thử thách trong môi trường công nghệ đổi mới.</li>
-        <font size="+3"> Gửi tin nhắn cho Minh</font>
+        <font size="+3"> Gửi tin nhắn cho Minh ngố nè:)))</font>
         <div id=message"">Cảm ơn thư của các bạn rất nhiều!</div>
         <form action="https://formspree.io/f/mgegrpge" method="POST">
             <label for="name">Họ tên:</label><br>
@@ -205,7 +206,39 @@
             </p>
         </form>
     </div>
-    
+    <div class="slideshow-container" id="pictures">
+        <div class="mySlides fade">
+            <img src="football team (1).jpg" style="width:40%">
+        </div>
+        <div class="mySlides fade">
+            <img src="zalo2.jpg" style="width:40%">
+        </div>
+        <div class="mySlides fade">
+            <img src="z5350983494891_ebae36be39316d098c1f4122a30482b0 (1).jpg" style="width:40%">
+        </div>
+        <div class="mySlides fade">
+            <img src="minh copy.jpg" style="width:40%">
+        </div>
+        <div class="mySlides fade">
+            <img src="ngoo.jpg" style="width:20%">
+        </div>
+    </div>
+    <script>
+        let slideIndex = 0;
+        showSlides();
+        
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 2000); // Thay đổi hình ảnh mỗi 1 giây
+        }
+    </script>
 </div>
     <div id="birthday-card" class="hidden">
         <font size="+3">Hôm nay là sinh nhật của Minh ngố đấy!</font>
@@ -258,8 +291,10 @@
     
 </body>
 <footer>
+    <div>Vài bức ảnh hơi sến của ngố và những người bạn:)))</div>
     <hr  width="100%" align="center" />
     <div>©2024 Trần Quang Minh(voyalphageR) All Rights Reserved </div>
+    <div>Web mình tự code nên nếu có góp ý hãy gửi thư nhé!</div>
     <font size="+3">Contact me:</font>
     <div id="algorithm-web">     
         <a href="https://www.facebook.com/minhtrq007" target="_blank" style="display: inline-block; background-color: #3b5998; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;">Facebook</a>
