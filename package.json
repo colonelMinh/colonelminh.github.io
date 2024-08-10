@@ -1,15 +1,19 @@
 {
-  "name": "myproject",
+  "name": "secure-app",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.5.2"
+  },
+  "description": "Hello",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "express": "^4.19.2"
-  }
+  "author": ""
 }

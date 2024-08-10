@@ -73,7 +73,7 @@
     <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trần Quang Minh</title>
+    <title>Tài liệu học tập</title>
 </head>
 <header>
     <a href="https://colonelminh.github.io/study-document.html" style="color: white; text-decoration: none;">
@@ -85,10 +85,13 @@
 </header>
 <body>
     <div class="navbar">
+        <span id="user-greeting" style="float: left; padding: 10px 15px; color: white;"></span>  
+        <a href="#" id="logout" style="float: right;">Đăng xuất</a>
         <a href="#high-school">Tài liệu ôn thi THPTQG</a>
         <a href="#secondary-school">Tài liệu THCS</a>
         <a href="#excellent-student">Tài liệu ôn thi HSG các cấp</a>
         <a href="#study-support">Tài liệu bổ trợ học tập</a>
+        <a id="greeting" href="#"></a>
     </div>
     <div class="bgimg" style="color: black;">
         <div id="excellent-student">
@@ -116,11 +119,36 @@
 
     <script src="scripts.js"></script>
     <script src="secure.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentTime = new Date().getTime(); // Thời gian hiện tại
+            const loginTime = user.loginTime;
+            const threeHoursInMilliseconds = 1 / 6 * 60 * 60 * 1000; // 10 phút tính bằng milliseconds
+            if (currentTime - loginTime >= threeHoursInMilliseconds) {
+                // Nếu thời gian từ khi đăng nhập đã vượt quá 10 phút, yêu cầu đăng nhập lại
+                alert('Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại.');
+                localStorage.removeItem('user'); // Xóa thông tin người dùng
+                window.location.href = 'login.html'; // Chuyển hướng về trang đăng nhập
+            }
+            else {
+                // Hiển thị thông tin người dùng
+                const navbar = document.querySelector('.navbar');
+                const greeting = document.createElement('a');
+                greeting.style.float = 'left';
+                greeting.textContent = `Xin chào, ${user.fullName || user.username}!`;
+                navbar.prepend(greeting);
+            }
+        });
 
+        document.getElementById('logout').addEventListener('click', function() {
+            localStorage.removeItem('user'); // Xóa thông tin đăng nhập
+            window.location.href = 'login.html'; // Chuyển hướng về trang đăng nhập
+        });
+    </script>
 </body>
 <footer>
     <hr  width="100%" align="center" />
-    <div>©2024 Trần Quang Minh(voyalphageR) All Rights Reserved </div>
+    <div>©2024 Trần Quang Minh(voyalphageR) All rights reserved </div>
     <div>Web mình tự code nên nếu có góp ý hãy gửi thư nhé!</div>
     <font size="+3">Contact me:</font>
     <div id="algorithm-web">     

@@ -15,22 +15,22 @@ function topFunction() {
     document.documentElement.scrollTop = 0; // Đối với Chrome, Firefox, IE và Opera
 }
 
-// Mã yêu cầu nhập mật khẩu
-var correctPassword = "minhsiucapvjppro"; // Thay đổi thành mật khẩu của bạn
-var pass = "minhcancutethe:))";
-var pass1 = "lionelmessithegoat";
+(function() {
+    var correctPassword = "minhsiucapvjppro"; // Thay đổi thành mật khẩu của bạn
+    var pass = "minhcancutethe:))";
+    var pass1 = "lionelmessithegoat";
 
-function checkPassword() {
-    var userPassword = prompt("Vui lòng nhập mật khẩu  để xem nội dung trang web:");
-    if ((userPassword === correctPassword) || (userPassword === pass) || (userPassword === pass1)) {
-        alert("Mật khẩu chính xác! Chào mừng bạn!");
-    } else {
-        alert("Mật khẩu không đúng. Liên hệ với tớ tại https://forms.gle/F94L36wYKzaHR8sTA để lấy mật khẩu nếu chưa có). Trang web sẽ đóng lại.");
-        window.close();
-        window.location.href = "https://youtu.be/dQw4w9WgXcQ?si=OGiGpjUlPwPcd-I4"; // Thay thế URL này bằng URL mà bạn muốn chuyển hướng khi người dùng nhập sai mật khẩu.
+    function checkPassword() {
+        var userPassword = prompt("Vui lòng nhập key để xem nội dung trang web:");
+        if (userPassword === correctPassword || userPassword === pass || userPassword === pass1) {
+            alert("Key chính xác! Chào mừng bạn!");
+        } else {
+            alert("Key không chính xác. Liên hệ tại https://forms.gle/F94L36wYKzaHR8sTA để lấy mật khẩu nếu chưa có). Trang web sẽ đóng lại.");
+            window.location.href = "https://www.google.com";
+        }
     }
-}
 
-window.onload = function() {
-    checkPassword();
-};
+    window.onload = function() {
+        checkPassword();
+    };
+})();
