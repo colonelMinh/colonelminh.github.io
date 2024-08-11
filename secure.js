@@ -25,8 +25,8 @@ function topFunction() {
         if (userPassword === correctPassword || userPassword === pass || userPassword === pass1) {
             alert("Key chính xác! Chào mừng bạn!");
         } else {
-            alert("Key không chính xác. Liên hệ tại https://forms.gle/F94L36wYKzaHR8sTA để lấy mật khẩu nếu chưa có). Trang web sẽ đóng lại.");
-            window.location.href = "https://www.google.com";
+            alert("Key không chính xác. Liên hệ tại https://forms.gle/F94L36wYKzaHR8sTA để lấy key nếu chưa có). Trang web sẽ đóng lại.");
+            window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
         }
     }
 
