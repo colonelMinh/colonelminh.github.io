@@ -1,6 +1,24 @@
-// Khi người dùng cuộn xuống 20px từ đầu tài liệu, hiển thị nút
+(function() {
+    // Kiểm tra cờ đăng nhập trong localStorage
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    
+    if (isLoggedIn !== 'true') {
+        // Nếu chưa đăng nhập hoặc cờ không đúng, chuyển hướng về trang login.html
+        window.location.href = 'login.html';
+    } else {
+        console.log('Người dùng đã đăng nhập, tiếp tục truy cập trang.');
+    }
+
+    // Nếu cần thêm các tính năng bảo mật khác, bạn có thể thêm vào đây.
+    // Ví dụ: Kiểm tra thời gian đăng nhập hoặc mã hóa dữ liệu.
+})();
+
+
+
+
+// Phần còn lại của mã
 window.onscroll = function() {scrollFunction()};
-        
+
 function scrollFunction() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
         document.getElementById("myBtn").style.display = "block";
@@ -9,14 +27,13 @@ function scrollFunction() {
     }
 }
 
-// Khi người dùng click vào nút, cuộn lên đầu tài liệu
 function topFunction() {
-    document.body.scrollTop = 0; // Đối với Safari
-    document.documentElement.scrollTop = 0; // Đối với Chrome, Firefox, IE và Opera
+    document.body.scrollTop = 0; 
+    document.documentElement.scrollTop = 0; 
 }
 
 (function() {
-    var correctPassword = "minhsiucapvjppro"; // Thay đổi thành mật khẩu của bạn
+    var correctPassword = "minhsiucapvjppro"; 
     var pass = "minhcancutethe:))";
     var pass1 = "lionelmessithegoat";
 

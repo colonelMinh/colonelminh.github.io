@@ -32,6 +32,8 @@ btnLogin.addEventListener("click", async (e) => {
                 fullName: userData.fullName,
                 loginTime: currentTime // Lưu thời gian đăng nhập
             }));
+            localStorage.setItem('isLoggedIn', 'true'); // Đặt cờ đăng nhập
+
             alert('Đăng nhập thành công');
             window.location.href = 'study-document.html';
         } else {

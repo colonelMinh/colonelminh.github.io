@@ -197,6 +197,7 @@ body {
   margin: 10px 0;
   border: 1px solid #ccc;
   border-radius: 4px;
+  text-align: center;
 }
 
 .login button, .signup button {
@@ -242,22 +243,23 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     width: 300px;
     text-align: center;
-  }
-  
-  .signup h1 {
+}
+
+.signup h1 {
     font-weight: 500;
     margin-bottom: 20px;
-  }
-  
-  .signup input {
-    width: 100%;
+}
+
+.signup input {
+    width: 90%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
-  
-  .signup button {
+    text-align: center; /* Center-align the text inside the input fields */
+}
+
+.signup button {
     width: 100%;
     padding: 10px;
     background-color: #007BFF;
@@ -266,26 +268,25 @@ body {
     border-radius: 4px;
     cursor: pointer;
     margin-top: 10px;
-  }
-  
-  .signup button:hover {
+}
+
+.signup button:hover {
     background-color: #0056b3;
-  }
-  
-  .signup__registerButton {
+}
+
+.signup__registerButton {
     display: inline-block;
     margin-top: 20px;
     color: #007BFF;
     text-decoration: none;
-  }
-  
-  .signup__registerButton:hover {
+}
+
+.signup__registerButton:hover {
     text-decoration: underline;
-  }
-  
-  div.powered-by {
+}
+
+div.powered-by {
     text-align: center;
-    margin-top: auto; /* Đẩy xuống dưới cùng của trang */
-    padding: 10px; 
-  }
-  
+    margin-top: auto;
+    padding: 10px;
+}
