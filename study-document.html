@@ -2,85 +2,120 @@
 <html lang="en">
 <head>
     <style>
-        .navbar {
-            overflow: hidden;
-            background-color: #458ee1;
-        }
-        .navbar a {
-            float: right;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 10px 15px;
-            text-decoration: none;
-        }
-        .navbar a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-        header {
-            color: white;
-            text-align: center;
-            padding: 5px;
-        }
         body, html {
-            background-color: #458ee1;
+            background-color: #f0f4f8;
             height: 100%;
             margin: 0;
             font: 400 15px/1.8 "Times New Roman", sans-serif;
-            color: #458ee1;
-        }
-        footer {
-            background-color: #458ee1;
-            color: rgb(255, 255, 255);
-            text-align: center;
-            padding: 5px;
+            color: #333;
         }
 
-        .bgimg{
+        header {
+            background-color: #458ee1;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 4px solid #0066cc;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+        }
+
+        header a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: #0066cc;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .navbar a {
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #004b99;
+            color: #e0e0e0;
+        }
+
+        .search-box {
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .search-box input[type="text"] {
+            padding: 10px;
+            width: 100%;
+            border: 2px solid #0066cc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .search-box input[type="text"]::placeholder {
+            color: #666;
+        }
+
+        footer {
+            background-color: #458ee1;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        
+        footer a:hover {
+            background-color: #005bb5;
+        }
+        
+        
+
+       
+
+        .bgimg {
             background-image: url('hoa.jpg');
             min-height: 100%;
-            margin : 0;
+            margin: 0;
             background-position: center;
             background-size: cover;
             text-align: center;
+            color: rgb(0, 0, 0);
+            padding: 20px;
         }
-        div.a {
-            text-align: center;
-        }
+
         #myBtn {
-            display: none; /* Ẩn nút khi trang web được tải */
-            position: fixed; /* Vị trí cố định trên màn hình */
-            bottom: 20px; /* Khoảng cách từ dưới cùng */
-            right: 30px; /* Khoảng cách từ phải */
-            z-index: 99; /* Đảm bảo nút nằm trên các phần tử khác */
-            border: none; /* Loại bỏ viền */
-            outline: none; /* Loại bỏ đường viền khi click */
-            background-color: #000000; /* Màu nền */
-            color: white; /* Màu chữ */
-            cursor: pointer; /* Hiển thị con trỏ như một tay khi di chuyển qua */
-            padding: 15px; /* Đệm xung quanh nội dung */
-            border-radius: 10px; /* Bo góc */
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            border: none;
+            background-color: #000;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 10px;
         }
+
         #myBtn:hover {
-            background-color: #555; /* Màu nền khi hover */
-        }
-        .search-box {
-            margin-top: 20px;
-            text-align: center;
-        }
-        .search-box input[type="text"] {
-            padding: 10px;
-            width: 80%;
-            border: 1px solid #333;
-            border-radius: 5px;
+            background-color: #555;
         }
     </style>
-    <meta property="og:title" content="Trần Quang Minh" />
-    <meta property="og:description" content="Tài liệu học tập miễn phí của Trần Quang Minh" />
-    <meta property="og:image" content="" />
-    <meta property="og:url" content="colonelminh.github.io" />
-    <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tài liệu học tập</title>
@@ -95,19 +130,21 @@
 </header>
 <body>
     <div class="navbar">
-        <span id="user-greeting" style="float: left; padding: 10px 15px; color: white;"></span>  
-        <a href="#" id="logout" style="float: right;">Đăng xuất</a>
+        <a href="index.html">Trang chủ</a>
+        <a href="#study-support">Tài liệu bổ trợ học tập</a>
         <a href="#high-school">Tài liệu ôn thi THPTQG</a>
         <a href="#secondary-school">Tài liệu THCS</a>
         <a href="#excellent-student">Tài liệu ôn thi HSG các cấp</a>
-        <a href="#study-support">Tài liệu bổ trợ học tập</a>
-        <a href="index.html">Trang chủ</a>    
-        <a id="greeting" href="#"></a>
+        <span id="user-greeting"></span>  
+        <a href="support.html">Hỗ trợ</a>  
+        <a href="#" id="logout">Đăng xuất</a>
     </div>
+
     <div class="search-box">
         <input type="text" id="search" placeholder="Tìm kiếm tài liệu">
     </div>
-    <div class="bgimg" style="color: black;">
+
+    <div class="bgimg">
         <div id="excellent-student">
             <font size="+3">Tài liệu ôn thi HSG các cấp</font>
             <li><a href="flatten-2013_Lop_12_14388.pdf" style="color: black; text-decoration: none;">Đề thi HSG tỉnh Hà Tĩnh môn Tin học lớp 12 năm 2012-2013</a></li>
@@ -184,4 +221,3 @@
         <a href="https://www.github.com/colonelminh" target="_blank" style="display: inline-block; background-color: #333; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;">GitHub</a>
     </div>
 </footer>
-</html>

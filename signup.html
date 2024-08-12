@@ -17,19 +17,43 @@
         <h5>Tài liệu học tập</h5>
         <form id="signup-form">
           <h5>Họ và tên</h5>
-          <input type="text" class="input-signup-fullname" id="signup-fullname" required />
+          <input type="text" name="fullname" id="signup-fullname" required />
           <h5>Email</h5>
-          <input type="text" class="input-signup-username" id="signup-email" required />
+          <input type="text" name="email" id="signup-email" required />
           <h5>Mật khẩu</h5>
-          <input type="password" class="input-signup-password" id="signup-password" required />
+          <input type="password" name="password" id="signup-password" required />
           <button type="submit" class="signup__signInButton">Đăng ký</button>
         </form>
+      
+          
         <a href="login.html" class="signup__registerButton">Đã có tài khoản? Đăng nhập ngay!</a>
       </div>
     </div>
     <div class="powered-by">
       Powered by <a href="https://colonelminh.github.io/" target="_blank">Đại tá Minh</a>
     </div>
+    <script>
+      const form = document.querySelector("#form")
+      const submitButton = document.querySelector("#submit")
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbwNdC3HGI2nuj0W0OatIHApjiMXkfx7-uEIIJZY9dDeR5WuQrty4ksROC9FZTlfGIK3/exec'
+   
+      form.addEventListener('submit', e => {
+        submitButton.disabled = true
+        e.preventDefault()
+        let requestBody = new FormData(form)
+        fetch(scriptURL, { method: 'POST', body: requestBody})
+          .then(response => {
+             alert('Success!', response)
+             submitButton.disabled = false
+            })
+          .catch(error => {
+          alert('Error!', error.message)
+            submitButton.disabled = false
+   
+          }
+          )
+      })
+   </script>
   </body>
   <script src="signup.js"></script>
 </html>

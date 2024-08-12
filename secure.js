@@ -1,22 +1,3 @@
-(function() {
-    // Kiểm tra cờ đăng nhập trong localStorage
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-    
-    if (isLoggedIn !== 'true') {
-        // Nếu chưa đăng nhập hoặc cờ không đúng, chuyển hướng về trang login.html
-        window.location.href = 'login.html';
-    } else {
-        console.log('Người dùng đã đăng nhập, tiếp tục truy cập trang.');
-    }
-
-    // Nếu cần thêm các tính năng bảo mật khác, bạn có thể thêm vào đây.
-    // Ví dụ: Kiểm tra thời gian đăng nhập hoặc mã hóa dữ liệu.
-})();
-
-
-
-
-// Phần còn lại của mã
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
@@ -42,8 +23,8 @@ function topFunction() {
         if (userPassword === correctPassword || userPassword === pass || userPassword === pass1) {
             alert("Key chính xác! Chào mừng bạn!");
         } else {
-            alert("Key không chính xác. Liên hệ tại https://forms.gle/F94L36wYKzaHR8sTA để lấy key nếu chưa có). Trang web sẽ đóng lại.");
-            window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+            alert("Key không chính xác. Liên hệ tại https://forms.gle/F94L36wYKzaHR8sTA để lấy key nếu chưa có). Trước khi lấy key, đăng ký tại https://colonelminh.github.io/signup.html. Trang web sẽ đóng lại.");
+            window.location.href = "https://www.google.com/";
         }
     }
 
