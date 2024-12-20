@@ -1,0 +1,127 @@
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.bgimg{
+    background-image: url('bg.jpg');
+    min-height: 100%;
+    margin : 0;
+    background-position: center;
+    background-size: cover;
+}
+.logo img {
+    width: 100px;
+    height: 100px;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+.logo h1 {
+    font-size: 24px;
+    color: #D9232D;
+    margin-bottom: 5px;
+}
+
+.logo p {
+    font-size: 14px;
+    color: #555;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9ecee;
+    color: #333;
+    line-height: 1.6;
+    display: flex; /* Sử dụng Flexbox để căn giữa nội dung */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    height: 100vh; /* Chiều cao toàn màn hình */
+    margin: 0;
+}
+
+
+
+
+.user a {
+    color: #D9232D;
+    text-decoration: none;
+    text-align: center;
+    font-size: 14px;
+}
+
+.main-content {
+    width: 70%; /* Giới hạn chiều rộng của nội dung chính */
+    max-width: 800px; /* Chiều rộng tối đa */
+    text-align: center;
+}
+
+.exam-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-around; /* Khoảng cách đều giữa các card */
+    gap: 10px; /* Khoảng cách giữa các card */
+    padding: 20px; /* Thêm khoảng trống bên trong */
+    margin: 0 auto; /* Căn giữa theo chiều ngang */
+    flex-wrap: wrap; /* Cho phép xuống dòng nếu card quá nhiều */
+}
+
+.exam-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px; /* Đảm bảo kích thước cố định */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    min-height: 320px;
+}
+
+.exam-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #D9232D;
+}
+
+.exam-card p {
+    margin-bottom: 8px;
+}
+
+.fee {
+    color: #D9232D;
+    font-weight: bold;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+button.disabled {
+    background-color: #ddd;
+    color: #999;
+    cursor: not-allowed;
+}
+
+.register-btn {
+    background-color: #D9232D;
+    color: #fff;
+    font-weight: bold;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 12px;
+    color: #000000;
+}
