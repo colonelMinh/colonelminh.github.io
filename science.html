@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thi thử ĐGTD - Toán</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+    <header>
+        <h1>Thi thử ĐGTD - Tư duy Khoa học và Giải quyết vấn đề</h1>
+        <div class="info">
+            <p id="time">Thời gian còn lại: 60:00</p>
+            <button id="submit-btn">Nộp bài</button>
+        </div>
+    </header>
+    <main>
+        <div class="question">
+            <p id="question-text"><strong>Câu 1:</strong> Nội dung câu hỏi sẽ xuất hiện ở đây</p>
+            <form id="answer-form">
+                <label><input type="radio" name="answer" value="A"> Đáp án A</label><br>
+                <label><input type="radio" name="answer" value="B"> Đáp án B</label><br>
+                <label><input type="radio" name="answer" value="C"> Đáp án C</label><br>
+                <label><input type="radio" name="answer" value="D"> Đáp án D</label><br>
+            </form>
+        </div>
+        <div class="navigation">
+            <button id="prev-btn">Câu trước</button>
+            <button id="next-btn">Câu tiếp</button>
+        </div>
+        <div class="question-map">
+            <p>Sơ đồ câu hỏi:</p>
+            <div id="question-list"></div>
+        </div>
+    </main>
+    <script>
+        // Câu hỏi và đáp án
+        const questions = [
+            { text: "Nội dung câu hỏi 1", correct: "A" },
+            { text: "Nội dung câu hỏi 2", correct: "B" },
+            { text: "Nội dung câu hỏi 3", correct: "C" },
+            { text: "Nội dung câu hỏi 4", correct: "D" }
+        ];
+        
+        // Biến trạng thái
+        let currentQuestionIndex = 0;
+        let correctAnswers = 0;
+        const answers = new Array(questions.length).fill(null); // Lưu đáp án người dùng
+
+        // DOM elements
+        const questionText = document.getElementById("question-text");
+        const answerForm = document.getElementById("answer-form");
+        const questionList = document.getElementById("question-list");
+
+        // Hiển thị câu hỏi
+        function loadQuestion(index) {
+            const question = questions[index];
+            questionText.innerHTML = `<strong>Câu ${index + 1}:</strong> ${question.text}`;
+            const inputs = answerForm.querySelectorAll("input[name='answer']");
+            inputs.forEach(input => {
+                input.checked = input.value === answers[index];
+            });
+            updateQuestionMap();
+        }
+
+        // Cập nhật sơ đồ câu hỏi
+        function updateQuestionMap() {
+            questionList.innerHTML = ""; // Xóa nội dung cũ
+            questions.forEach((_, index) => {
+                const button = document.createElement("button");
+                button.textContent = index + 1;
+                button.className = answers[index] ? "answered" : ""; // Tô màu nếu đã làm xong
+                button.addEventListener("click", () => {
+                    currentQuestionIndex = index;
+                    loadQuestion(currentQuestionIndex);
+                });
+                questionList.appendChild(button);
+            });
+        }
+
+        // Nút "Câu tiếp"
+        document.getElementById("next-btn").addEventListener("click", () => {
+            const selectedAnswer = answerForm.querySelector("input[name='answer']:checked");
+            if (selectedAnswer) {
+                answers[currentQuestionIndex] = selectedAnswer.value;
+            }
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion(currentQuestionIndex);
+            } else {
+                alert("Bạn đã đến câu cuối!");
+            }
+        });
+
+        // Nút "Câu trước"
+        document.getElementById("prev-btn").addEventListener("click", () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion(currentQuestionIndex);
+            } else {
+                alert("Bạn đang ở câu đầu tiên!");
+            }
+        });
+        </script>
+<script>
+    document.getElementById("submit-btn").addEventListener("click", () => {
+        const totalQuestions = questions.length;
+        const correctAnswers = answers.filter((ans, i) => ans === questions[i].correct).length;
+
+        // Lưu dữ liệu tổng hợp vào localStorage
+        const scienceResult = {
+            correct: correctAnswers,
+            total: totalQuestions,
+            time: 60 * 60 - timeRemaining // Tổng thời gian làm bài của phần này
+        };
+        localStorage.setItem("scienceResult", JSON.stringify(scienceResult));
+
+        // Chuyển đến trang kết quả
+        window.location.href = "results.html";
+    });
+</script>
+<script>
+        // Đồng hồ đếm ngược
+        let timeRemaining = 60 * 60;
+        const timerElement = document.getElementById("time");
+        const interval = setInterval(() => {
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            timerElement.textContent = `Thời gian còn lại: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            if (timeRemaining === 0) {
+    clearInterval(interval);
+    alert("Hết thời gian làm bài!");
+    const totalQuestions = questions.length;
+    const correctAnswers = answers.filter((ans, i) => ans === questions[i].correct).length;
+
+    // Lưu dữ liệu tổng hợp vào localStorage
+    const scienceResult = {
+        correct: correctAnswers,
+        total: totalQuestions,
+        time: 60 * 60 - timeRemaining // Tổng thời gian làm bài của phần này
+    };
+    localStorage.setItem("scienceResult", JSON.stringify(scienceResult));
+
+    // Chuyển đến trang kết quả
+    window.location.href = "results.html";
+}
+
+            timeRemaining--;
+        }, 1000);
+
+        // Hiển thị câu hỏi đầu tiên và sơ đồ
+        loadQuestion(currentQuestionIndex);
+    </script>
+</body>
+</html>

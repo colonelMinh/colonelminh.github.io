@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thi thử ĐGTD - Toán</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+    <header>
+        <h1>Thi thử ĐGTD - Toán</h1>
+        <div class="info">
+            <p id="time">Thời gian còn lại: 60:00</p>
+            <button id="submit-btn">Nộp bài</button>
+        </div>
+    </header>
+    <main>
+        <div class="question">
+            <p id="question-text"><strong>Câu 1:</strong> Nội dung câu hỏi sẽ xuất hiện ở đây</p>
+            <form id="answer-form">
+                <label><input type="radio" name="answer" value="A"> Đáp án A</label><br>
+                <label><input type="radio" name="answer" value="B"> Đáp án B</label><br>
+                <label><input type="radio" name="answer" value="C"> Đáp án C</label><br>
+                <label><input type="radio" name="answer" value="D"> Đáp án D</label><br>
+            </form>
+        </div>
+        <div class="navigation">
+            <button id="prev-btn">Câu trước</button>
+            <button id="next-btn">Câu tiếp</button>
+        </div>
+        <div class="question-map">
+            <p>Sơ đồ câu hỏi:</p>
+            <div id="question-list"></div>
+        </div>
+    </main>
+    <script>
+        // Xóa toàn bộ dữ liệu trong localStorage khi bắt đầu vào trang
+        localStorage.clear();
+
+        const questions = [
+            { text: "Câu hỏi Toán 1", correct: "A" },
+            { text: "Câu hỏi Toán 2", correct: "B" },
+            { text: "Câu hỏi Toán 3", correct: "C" },
+            { text: "Câu hỏi Toán 4", correct: "D" }
+        ];
+        let currentQuestionIndex = 0;
+        let answers = new Array(questions.length).fill(null);
+        const questionText = document.getElementById("question-text");
+        const answerForm = document.getElementById("answer-form");
+        const questionList = document.getElementById("question-list");
+        const timeElement = document.getElementById("time");
+
+        function loadQuestion(index) {
+            const question = questions[index];
+            questionText.innerHTML = `<strong>Câu ${index + 1}:</strong> ${question.text}`;
+            const inputs = answerForm.querySelectorAll("input[name='answer']");
+            inputs.forEach(input => {
+                input.checked = input.value === answers[index];
+            });
+            updateQuestionMap();
+        }
+
+        function updateQuestionMap() {
+            questionList.innerHTML = "";
+            questions.forEach((_, index) => {
+                const button = document.createElement("button");
+                button.textContent = index + 1;
+                button.className = answers[index] ? "answered" : "";
+                button.addEventListener("click", () => {
+                    currentQuestionIndex = index;
+                    loadQuestion(currentQuestionIndex);
+                });
+                questionList.appendChild(button);
+            });
+        }
+
+        document.getElementById("next-btn").addEventListener("click", () => {
+            const selectedAnswer = answerForm.querySelector("input[name='answer']:checked");
+            if (selectedAnswer) {
+                answers[currentQuestionIndex] = selectedAnswer.value;
+            }
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion(currentQuestionIndex);
+            } else {
+                alert("Bạn đã đến câu cuối!");
+            }
+        });
+
+        document.getElementById("prev-btn").addEventListener("click", () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion(currentQuestionIndex);
+            } else {
+                alert("Bạn đang ở câu đầu tiên!");
+            }
+        });
+
+        document.getElementById("submit-btn").addEventListener("click", () => {
+            const correctAnswers = answers.filter((ans, i) => ans === questions[i].correct).length;
+            const mathResult = {
+                correct: correctAnswers,
+                total: questions.length,
+                time: 60 * 60 - timeRemaining
+            };
+            localStorage.setItem("mathResult", JSON.stringify(mathResult));
+            window.location.href = "literature.html";
+        });
+
+        let timeRemaining = 60 * 60;
+        const timer = setInterval(() => {
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            timeElement.textContent = `Thời gian còn lại: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            if (timeRemaining === 0) {
+                clearInterval(timer);
+                alert("Hết thời gian!");
+                document.getElementById("submit-btn").click();
+            }
+            timeRemaining--;
+        }, 1000);
+
+        loadQuestion(currentQuestionIndex);
+    </script>
+</body>
+</html>
+

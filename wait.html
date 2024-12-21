@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách kỳ thi</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+
+<body class="bgimg">
+    
+    <main class="main-content">
+        <header>
+            <div class="logo">
+                <a href="https://thpt-tranphu-hatinh.edu.vn/"><img src="294340490_540262004555841_3980948053556117300_n-removebg-preview.png" alt="logo"></a>
+                <h1>PHÒNG KHẢO THÍ GIÁO DỤC - TRƯỜNG THPT TRẦN PHÚ</h1>
+            </div>
+        </header>
+        <h2>Bài thi</h2>
+        <div class="exam-container2">
+            <div class="exam-card3">
+                <h3>Bài thi thử Đánh giá tư duy</h3>
+                <p><strong>Thời gian làm bài:</strong> 150 phút</p>
+                <p><strong>Dung lượng:</strong> 100 câu</p>
+                <p><strong>Thời gian thi:</strong> 13h30 - 16h20</p>
+                <p><strong>Mã bảo mật:</strong></p>
+                <textarea name="security-key" id="security-key" cols="30" rows="1"></textarea>
+                <em>Vui lòng liên hệ với quản trị kíp thi hoặc giám thị để lấy mã bảo mật.</em>
+                <button type="button" class="register-btn" id="button1">Bắt đầu làm bài</button>
+            </div>   
+        </div>
+        
+    </main>
+    <footer class="footer">
+        <p>Copyright © 2021 by colonelMinh</p>
+        <p>Operated by Tran Phu HS | Powered by Minh</p>
+    </footer>
+    <script>
+        // Danh sách các mã bảo mật hợp lệ
+        const validKeys = ["TTCTS1TG", "04062007", "16012007"];
+    
+        // Lắng nghe sự kiện click nút "Bắt đầu làm bài"
+        document.getElementById("button1").addEventListener("click", function() {
+            const enteredKey = document.getElementById("security-key").value.trim();
+    
+            // Kiểm tra mã bảo mật
+            if (validKeys.includes(enteredKey)) {
+                window.location.href = "exam.html";
+            } else {
+                alert("Mã bảo mật không tồn tại");
+            }
+        });
+    </script>
+    
+</body>
+</html>

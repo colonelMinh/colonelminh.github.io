@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách kỳ thi</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+
+<body class="bgimg">
+    
+    <main class="main-content">
+        <header>
+            <div class="logo">
+                <a href="https://thpt-tranphu-hatinh.edu.vn/"><img src="294340490_540262004555841_3980948053556117300_n-removebg-preview.png" alt="logo"></a>
+                <h1>PHÒNG KHẢO THÍ GIÁO DỤC - TRƯỜNG THPT TRẦN PHÚ</h1>
+            </div>
+        </header>
+        <h2>Bài thi</h2>
+        <div class="exam-container2">
+            <div class="results-container">
+                <h2>Tổng kết:</h2>
+                <p id="math-result">Toán: Đang tải...</p>
+                <p id="science-result">Tư duy Khoa học: Đang tải...</p>
+                <p id="literature-result">Ngữ văn: Đang tải...</p>
+                <hr>
+                <p id="total-result">Tổng câu đúng: Đang tải...</p>
+                <p id="total-time">Tổng thời gian làm bài: Đang tải...</p>
+                <button onclick="window.location.href='test.html'"" class="register-btn">Về trang chủ</button>
+            </div>
+            
+        </div>
+        
+    </main>
+    <footer class="footer">
+        <p>Copyright © 2021 by colonelMinh</p>
+        <p>Operated by Tran Phu HS | Powered by Minh</p>
+    </footer>
+    
+    <script>
+        // Lấy dữ liệu từ localStorage
+        const mathResult = JSON.parse(localStorage.getItem("mathResult"));
+        const scienceResult = JSON.parse(localStorage.getItem("scienceResult"));
+        const literatureResult = JSON.parse(localStorage.getItem("literatureResult"));
+
+        // Tính tổng số câu đúng và tổng thời gian
+        const totalCorrect = (mathResult?.correct || 0) + (scienceResult?.correct || 0) + (literatureResult?.correct || 0);
+        const totalTime = (mathResult?.time || 0) + (scienceResult?.time || 0) + (literatureResult?.time || 0);
+
+        // Hiển thị kết quả
+        document.getElementById("math-result").textContent = `Toán: ${mathResult?.correct || 0}/${mathResult?.total || 0} câu đúng`;
+        document.getElementById("science-result").textContent = `Tư duy Khoa học: ${scienceResult?.correct || 0}/${scienceResult?.total || 0} câu đúng`;
+        document.getElementById("literature-result").textContent = `Ngữ văn: ${literatureResult?.correct || 0}/${literatureResult?.total || 0} câu đúng`;
+        document.getElementById("total-result").textContent = `Tổng câu đúng: ${totalCorrect} câu`;
+        document.getElementById("total-time").textContent = `Tổng thời gian làm bài: ${Math.floor(totalTime / 60)} phút ${totalTime % 60} giây`;
+    </script>
+</body>
+</html>

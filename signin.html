@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng nhập</title>
+    <link href="style.css" rel="stylesheet">
+    <!-- font roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+      html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+      }
+
+      .bgimg {
+          background-image: url('hoa.jpg');
+          height: 100%;
+          width: 100%;
+          background-position: center;
+          background-size: cover;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+
+      .login {
+          background: rgba(255, 255, 255, 0.8);
+          padding: 50px;
+          border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bgimg">
+      <div class="login">
+        <div class="login__container">
+          <h1>Đăng nhập</h1>
+          <form id="login-form">
+            <h5>Email</h5>
+            <input type="text" class="input-login-username" id="login-email" />
+            <h5>Mật khẩu</h5>
+            <input type="password" class="input-login-password" id="login-password" />
+            <button type="submit" class="login__signInButton">Đăng nhập</button>
+          </form>
+          <a href="signup.html" class="login__registerButton">Tạo tài khoản mới</a> &ensp;
+          <a href="support.html" class="login__registerButton">Quên mật khẩu và hỗ trợ?</a>
+          <div>Lưu ý:
+            <li>Một tài khoản chỉ sử dụng trên một thiết bị và địa chỉ Email đăng ký tài khoản phải khớp với Email đã đăng ký key</li>
+            <li>Bạn có thể đăng ký tài khoản mới trên thiết bị khác nhưng phải sử dụng Email và tên đăng ký khớp với tài khoản trước đó</li>
+          </div>
+        </div>
+      </div> 
+    </div>  
+  <script src="main2.js"></script>
+  </body>
+</html>

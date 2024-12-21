@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách kỳ thi</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+
+<body class="bgimg">
+    
+    <main class="main-content">
+        <header>
+            <div class="logo">
+                <a href="https://thpt-tranphu-hatinh.edu.vn/"><img src="294340490_540262004555841_3980948053556117300_n-removebg-preview.png" alt="logo"></a>
+                <h1>PHÒNG KHẢO THÍ GIÁO DỤC - TRƯỜNG THPT TRẦN PHÚ</h1>
+            </div>
+        </header>
+        <h2>Bài thi</h2>
+        <div class="exam-container">
+            <div class="exam-card2">
+                <h3>Bài thi thử</h3>
+                <p><strong>Phần:</strong> Tư duy Toán học</p>
+                <p><strong>Thời gian làm bài:</strong> 60 phút</p>
+                <p><strong>Dung lượng:</strong> 40 câu</p>
+                <p><strong>Thời gian thi:</strong> 13h30 - 14h30</p>
+                <button type="button" class="register-btn" id="button1">Bắt đầu làm bài</button>
+            </div>
+            <div class="exam-card2">
+                <h3>Bài thi thử</h3>
+                <p><strong>Phần:</strong> Tư duy Đọc hiểu</p>
+                <p><strong>Thời gian làm bài:</strong> 30 phút</p>
+                <p><strong>Dung lượng:</strong> 20 câu</p>
+                <p><strong>Thời gian thi:</strong> 14h40 - 15h10</p>
+                <button type="button" class="disabled" id="button2" disabled>Hiện chưa mở</button>
+            </div>
+            <div class="exam-card2">
+                <h3>Bài thi thử</h3>
+                <p><strong>Phần:</strong> Tư duy Khoa học và Giải quyết vấn đề</p>
+                <p><strong>Thời gian làm bài:</strong> 60 phút</p>
+                <p><strong>Dung lượng:</strong> 40 câu</p>
+                <p><strong>Thời gian thi:</strong> 15h20 - 16h20</p>
+                <button type="button" class="disabled" id="button3" disabled>Hiện chưa mở</button>    
+        </div>
+        
+    </main>
+    <footer class="footer">
+        <p>Copyright © 2021 by colonelMinh</p>
+        <p>Operated by Tran Phu HS | Powered by Minh</p>
+    </footer>
+    <script>
+        document.getElementById("button1").addEventListener("click", function() {
+            window.location.href = "math.html";
+        });
+        document.getElementById("button2").addEventListener("click", function() {
+            window.location.href = "literature.html";
+        });
+        document.getElementById("button3").addEventListener("click", function() {
+            window.location.href = "science.html";
+        });
+    </script>
+</body>
+</html>

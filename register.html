@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng ký tài khoản</title>
+    <link href="style1.css" rel="stylesheet">
+    <!-- font roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- form signup -->
+    <div class="signup">
+      <div class="signup__container">
+        <div class="logo">
+            <a href="https://thpt-tranphu-hatinh.edu.vn/"><img src="294340490_540262004555841_3980948053556117300_n-removebg-preview.png" alt="logo"></a>
+        </div>
+        <h4>PHÒNG KHẢO THÍ GIÁO DỤC - TRƯỜNG THPT TRẦN PHÚ</h4>
+        <h3>Đăng ký</h3>
+        <form id="signup-form">
+          <h5>Họ và tên</h5>
+          <input type="text" name="fullname" id="signup-fullname" required />
+          <h5>Email</h5>
+          <input type="text" name="email" id="signup-email" required />
+          <h5>Mật khẩu</h5>
+          <input type="password" name="password" id="signup-password" required />
+          <button type="submit" class="signup__signInButton">Đăng ký</button>
+        </form>
+      
+          
+        <a href="signin.html" class="signup__registerButton">Đã có tài khoản? Đăng nhập ngay!</a>
+      </div>
+    </div>
+    <div class="powered-by">
+      Powered by <a href="https://colonelminh.github.io/" target="_blank">Đại tá Minh</a>
+    </div>
+    <script>
+      const form = document.querySelector("#form")
+      const submitButton = document.querySelector("#submit")
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbwNdC3HGI2nuj0W0OatIHApjiMXkfx7-uEIIJZY9dDeR5WuQrty4ksROC9FZTlfGIK3/exec'
+   
+      form.addEventListener('submit', e => {
+        submitButton.disabled = true
+        e.preventDefault()
+        let requestBody = new FormData(form)
+        fetch(scriptURL, { method: 'POST', body: requestBody})
+          .then(response => {
+             alert('Success!', response)
+             submitButton.disabled = false
+            })
+          .catch(error => {
+          alert('Error!', error.message)
+            submitButton.disabled = false
+   
+          }
+          )
+      })
+   </script>
+  </body>
+  <script src="register.js"></script>
+</html>

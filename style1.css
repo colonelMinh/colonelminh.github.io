@@ -69,6 +69,17 @@ body {
     margin: 0 auto; /* Căn giữa theo chiều ngang */
     flex-wrap: wrap; /* Cho phép xuống dòng nếu card quá nhiều */
 }
+.exam-container2 {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    width: 290px;
+    gap: 10px; /* Khoảng cách giữa các card */
+    padding: 20px; /* Thêm khoảng trống bên trong */
+    margin: 0 auto; /* Căn giữa theo chiều ngang */
+}
+
 
 .exam-card {
     background-color: #fff;
@@ -76,6 +87,30 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
     width: 300px; /* Đảm bảo kích thước cố định */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    min-height: 320px;
+}
+.exam-card2 {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 200px; /* Đảm bảo kích thước cố định */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    min-height: 320px;
+}
+.exam-card3 {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 250px; /* Đảm bảo kích thước cố định */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -125,3 +160,82 @@ button.disabled {
     font-size: 12px;
     color: #000000;
 }
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #f0f0f0;
+  }
+  
+  .login, .signup {
+    background: #ffffff;
+    margin: 50px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+  }
+  
+  .login h1, .signup h1 {
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+  
+  .login input, .signup input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+  }
+  
+  .login button, .signup button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .login button:hover, .signup button:hover {
+    background-color: #0056b3;
+  }
+  
+  .login__registerButton, .signup__registerButton {
+    display: inline-block;
+    margin-top: 20px;
+    color: #007BFF;
+    text-decoration: none;
+  }
+  
+  .login__registerButton:hover, .signup__registerButton:hover {
+    text-decoration: underline;
+  }
+  body {
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background: #f0f0f0;
+    }
+    
+    .signup {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      text-align: center;
+  }
+  
