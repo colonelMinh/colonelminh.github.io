@@ -34,28 +34,32 @@
         </div>
     </main>
     <script>
-        // Câu hỏi và đáp án
         const questions = [
-            { text: "Nội dung câu hỏi 1", correct: "A" },
-            { text: "Nội dung câu hỏi 2", correct: "B" },
-            { text: "Nội dung câu hỏi 3", correct: "C" },
-            { text: "Nội dung câu hỏi 4", correct: "D" }
+            { text: "Ai là người cute nhất TG?", answers: ["NTT", "Gal Gadot", "QQ", "Trần Hà Linh"], correct: "A" },
+            { text: "Đâu là số nguyên tố đầu tiên?", answers: ["0", "2", "3", "5"], correct: "B" },
+            { text: "Kết quả của 2 + 2 là bao nhiêu?", answers: ["3", "5", "4", "6"], correct: "C" },
+            { text: "Câu lạc bộ nào vô địch Champions League nhiều nhất?", answers: ["Barcelona", "AC Milan", "Manchester United", "Real Madrid"], correct: "D" },
+            { text: "Tổng của các góc trong tam giác là bao nhiêu độ?", answers: ["360 độ", "90 độ", "180 độ", "120 độ"], correct: "C" },
+            { text: "Đơn vị đo của lực là gì?", answers: ["Newton", "Joule", "Pascal", "Watt"], correct: "A" },
+            { text: "Trái đất quay quanh trục bao lâu một vòng?", answers: ["12 giờ", "24 giờ", "30 giờ", "48 giờ"], correct: "B" },
+            { text: "Người sáng lập Microsoft là ai?", answers: ["Bill Gates", "Steve Jobs", "Elon Musk", "Jeff Bezos"], correct: "A" }
         ];
-        
-        // Biến trạng thái
         let currentQuestionIndex = 0;
-        let correctAnswers = 0;
-        const answers = new Array(questions.length).fill(null); // Lưu đáp án người dùng
-
-        // DOM elements
+        let answers = new Array(questions.length).fill(null);
         const questionText = document.getElementById("question-text");
         const answerForm = document.getElementById("answer-form");
         const questionList = document.getElementById("question-list");
+        const timeElement = document.getElementById("time");
 
-        // Hiển thị câu hỏi
         function loadQuestion(index) {
             const question = questions[index];
             questionText.innerHTML = `<strong>Câu ${index + 1}:</strong> ${question.text}`;
+            answerForm.innerHTML = question.answers.map((answer, i) => `
+                <label>
+                    <input type="radio" name="answer" value="${String.fromCharCode(65 + i)}">
+                    ${answer}
+                </label><br>
+            `).join('');
             const inputs = answerForm.querySelectorAll("input[name='answer']");
             inputs.forEach(input => {
                 input.checked = input.value === answers[index];
