@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thi thử ĐGTD - Toán</title>
     <link rel="stylesheet" href="style3.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <header>
@@ -31,15 +33,69 @@
     </main>
     <script>
         const questions = [
-            { text: "Ai là người cute nhất TG?", answers: ["NTT", "Gal Gadot", "QQ", "Trần Hà Linh"], correct: "A" },
-            { text: "Đâu là số nguyên tố đầu tiên?", answers: ["0", "2", "3", "5"], correct: "B" },
-            { text: "Kết quả của 2 + 2 là bao nhiêu?", answers: ["3", "5", "4", "6"], correct: "C" },
-            { text: "Câu lạc bộ nào vô địch Champions League nhiều nhất?", answers: ["Barcelona", "AC Milan", "Manchester United", "Real Madrid"], correct: "D" },
-            { text: "Tổng của các góc trong tam giác là bao nhiêu độ?", answers: ["360 độ", "90 độ", "180 độ", "120 độ"], correct: "C" },
-            { text: "Đơn vị đo của lực là gì?", answers: ["Newton", "Joule", "Pascal", "Watt"], correct: "A" },
-            { text: "Trái đất quay quanh trục bao lâu một vòng?", answers: ["12 giờ", "24 giờ", "30 giờ", "48 giờ"], correct: "B" },
-            { text: "Người sáng lập Microsoft là ai?", answers: ["Bill Gates", "Steve Jobs", "Elon Musk", "Jeff Bezos"], correct: "A" }
+            {
+                text: "Hàm số nào sau đây nghịch biến trong khoảng \\\((-∞; 0)\\)?",
+                answers: [
+                    "\\(y = \\\sqrt{2x^2 + 1}\\)",
+                    "\\(y = -\\\sqrt{2x^2 + 1}\\)",
+                    "\\(y = \\\sqrt{2(x+1)^2}\\)",
+                    "\\(y = -\\\sqrt{2(x+1)^2}\\)"
+                ],
+                correct: "A"
+            },
+            {
+                text: "Xác định Parabol \\((P): y = ax^2 + bx + 2\\) biết rằng Parabol đi qua hai điểm \\(M(1; 5)\\) và \\(N(2; -2)\\).",
+                answers: [
+                    "\\(y = -5x^2 + 8x + 2\\)",
+                    "\\(y = 10x^2 + 13x + 2\\)",
+                    "\\(y = -10x^2 - 13x + 2\\)",
+                    "\\(y = 9x^2 + 6x - 5\\)"
+                ],
+                correct: "A"
+            },
+            {
+                text: "Với hình vuông A1B1C1D1 như hình vẽ bên, cách tô màu như phần gạch sọc được gọi là cách tô màu “đẹp”. Một nhà thiết kế tiến hành tô màu cho một hình vuông như hình bên, theo quy định sau: Bước 1: Tô màu 'đẹp' cho hình vuông A1B1C1D1. Bước 2: Tô màu 'đẹp' cho hình vuông A2B2C2D2 là hình vuông ở chính giữa khi chia hình vuông A1B1C1D1 thành 9 phần bằng nhau như hình vẽ. Bước 3: Tô màu 'đẹp' cho hình vuông A3B3C3D3 là hình vuông ở chính giữa khi chia hình vuông A2B2C2D2 thành 9 phần bằng nhau. Cứ tiếp tục như vậy. Hỏi cần đúng bao nhiêu bước để tổng diện tích phần được tô màu chiếm \\(\\frac{40}{81}\\) diện tích hình vuông ban đầu?",
+                answers: [
+                    "2",
+                    "4",
+                    "5",
+                    "6"
+                ],
+                correct: "A",
+                image: "Ảnh chụp màn hình 2024-12-23 212254.png"
+            },
+            {
+                text: "Tập hợp các giá trị của tham số m để hàm số \\(y = x^2 + (2m + 1)x - m + 3\\) nghịch biến trên khoảng \\\((-∞, 2)\\) là",
+                answers: [
+                    "\\\((-\\frac{5}{4}; +∞) \\)",
+                    "\\\((-\\frac{5}{2}; +∞) \\)",
+                    "\\\((\\frac{5}{4}; +∞) \\)",
+                    "\\\((+∞; \\frac{5}{2}) \\)"
+                ],
+                correct: "D"
+            },
+            {
+                text: "Phương trình \\(mx^2 - 2mx + 4 = 0 \\) vô nghiệm khi và chỉ khi",
+                answers: [
+                    "\\(m \\in (0 ; 4) \\)",
+                    "\\(m < 0 \\) hoặc \\(m > 4 \\)",
+                    "\\(m \\in [0 ; 4 ] \\)",
+                    "\\(m \\in [0 ; 4) \\)"
+                ],
+                correct: "D"
+            },
+            {
+                text: "Một công ty chuyên sản xuất đĩa CD với chi phí mỗi đĩa là 40 (nghìn đồng). Theo nghiên cứu nếu mỗi đĩa bán với giá x (nghìn đồng) thì số lượng đĩa bán được sẽ là \\(q(x) = 120 - x \\), \\(x \\in N^* \\). Hãy xác định giá bán của mỗi đĩa sao cho lợi nhuận mà công ty thu được là cao nhất?",
+                answers: [
+                    "60 (nghìn đồng)",
+                    "70 (nghìn đồng)",
+                    "80 (nghìn đồng)",
+                    "90 (nghìn đồng)"
+                ],
+                correct: "C"
+            }
         ];
+
         let currentQuestionIndex = 0;
         let answers = new Array(questions.length).fill(null);
         const questionText = document.getElementById("question-text");
@@ -49,6 +105,10 @@
 
         function loadQuestion(index) {
             const question = questions[index];
+            let html = `<strong>Câu ${index + 1}:</strong> ${question.text}`;
+            if (question.image) {
+                html += `<br><img src="${question.image}" alt="Hình minh họa" style="max-width:100%;height:auto;">`;
+            }
             questionText.innerHTML = `<strong>Câu ${index + 1}:</strong> ${question.text}`;
             answerForm.innerHTML = question.answers.map((answer, i) => `
                 <label>
@@ -60,6 +120,7 @@
             inputs.forEach(input => {
                 input.checked = input.value === answers[index];
             });
+            MathJax.typeset(); // Cập nhật MathJax để hiển thị LaTeX
             updateQuestionMap();
         }
 

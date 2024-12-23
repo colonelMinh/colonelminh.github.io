@@ -6,13 +6,13 @@
     <title>Kết quả</title>
     <link rel="stylesheet" href="style1.css">
 </head>
-
 <body class="bgimg">
-    
     <main class="main-content">
         <header>
             <div class="logo">
-                <a href="https://thpt-tranphu-hatinh.edu.vn/"><img src="294340490_540262004555841_3980948053556117300_n-removebg-preview.png" alt="logo"></a>
+                <a href="https://thpt-tranphu-hatinh.edu.vn/">
+                    <img src="294340490_540262004555841_3980948053556117300_n-removebg-preview.png" alt="logo">
+                </a>
                 <h1>PHÒNG KHẢO THÍ GIÁO DỤC - TRƯỜNG THPT TRẦN PHÚ</h1>
             </div>
         </header>
@@ -26,17 +26,14 @@
                 <hr>
                 <p id="total-result">Tổng câu đúng: Đang tải...</p>
                 <p id="total-time">Tổng thời gian làm bài: Đang tải...</p>
-                <button onclick="window.location.href='test.html'"" class="register-btn">Về trang chủ</button>
+                <button onclick="window.location.href='test.html'" class="register-btn">Về trang chủ</button>
             </div>
-            
         </div>
-        
     </main>
     <footer class="footer">
         <p>Copyright © 2021 by colonelMinh</p>
         <p>Operated by Tran Phu HS | Powered by Minh</p>
     </footer>
-    
     <script>
         // Lấy dữ liệu từ localStorage
         const mathResult = JSON.parse(localStorage.getItem("mathResult"));
@@ -53,6 +50,33 @@
         document.getElementById("literature-result").textContent = `Ngữ văn: ${literatureResult?.correct || 0}/${literatureResult?.total || 0} câu đúng`;
         document.getElementById("total-result").textContent = `Tổng câu đúng: ${totalCorrect} câu`;
         document.getElementById("total-time").textContent = `Tổng thời gian làm bài: ${Math.floor(totalTime / 60)} phút ${totalTime % 60} giây`;
+
+        // Tự động gửi kết quả lên Google Sheets qua Apps Script
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbze6ybwP30pSPSW-xRkcKQXNrghCAUbb6NnVCWYk6M410euikXtGJlG9Fh0bZOAScFTaw/exec';
+        const data = {
+            mathCorrect: mathResult?.correct || 0,
+            mathTotal: mathResult?.total || 0,
+            scienceCorrect: scienceResult?.correct || 0,
+            scienceTotal: scienceResult?.total || 0,
+            literatureCorrect: literatureResult?.correct || 0,
+            literatureTotal: literatureResult?.total || 0,
+            totalCorrect: totalCorrect,
+            totalTime: totalTime
+        };
+
+        fetch(scriptURL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log("Kết quả đã được gửi thành công!");
+            } else {
+                console.error("Có lỗi xảy ra khi gửi kết quả!");
+            }
+        })
+        .catch(error => console.error("Error:", error));
     </script>
 </body>
 </html>
