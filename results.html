@@ -20,9 +20,9 @@
         <div class="exam-container2">
             <div class="results-container">
                 <h2>Tổng kết:</h2>
-                <p id="math-result">Toán: Đang tải...</p>
-                <p id="science-result">Tư duy Khoa học: Đang tải...</p>
-                <p id="literature-result">Tư duy đọc hiểu: Đang tải...</p>
+                <p id="math-result">Tư duy Toán học: Đang tải...</p>
+                <p id="science-result">Tư duy Khoa học và Giải quyết vấn đề: Đang tải...</p>
+                <p id="literature-result">Tư duy Đọc hiểu: Đang tải...</p>
                 <hr>
                 <p id="total-result">Tổng câu đúng: Đang tải...</p>
                 <p id="total-time">Tổng thời gian làm bài: Đang tải...</p>
@@ -35,6 +35,12 @@
         <p>Operated by Tran Phu HS | Powered by Minh</p>
     </footer>
     <script>
+        (function() {
+            window.history.pushState(null, "", window.location.href);
+            window.addEventListener("popstate", function() {
+                window.history.pushState(null, "", window.location.href);
+            });
+        })();
         // Lấy dữ liệu từ localStorage
         const mathResult = JSON.parse(localStorage.getItem("mathResult"));
         const scienceResult = JSON.parse(localStorage.getItem("scienceResult"));

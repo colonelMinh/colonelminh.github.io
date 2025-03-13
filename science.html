@@ -5,155 +5,275 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thi thử ĐGTD - Toán</title>
     <link rel="stylesheet" href="style3.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Thi thử ĐGTD - Tư duy Khoa học và Giải quyết vấn đề</h1>
-        <div class="info">
-            <p id="time">Thời gian còn lại: 60:00</p>
-            <button id="submit-btn">Nộp bài</button>
-        </div>
-    </header>
-    <main>
-        <div class="question">
-            <p id="question-text"><strong>Câu 1:</strong> Nội dung câu hỏi sẽ xuất hiện ở đây</p>
-            <form id="answer-form">
-                <label><input type="radio" name="answer" value="A"> Đáp án A</label><br>
-                <label><input type="radio" name="answer" value="B"> Đáp án B</label><br>
-                <label><input type="radio" name="answer" value="C"> Đáp án C</label><br>
-                <label><input type="radio" name="answer" value="D"> Đáp án D</label><br>
-            </form>
-        </div>
-        <div class="navigation">
-            <button id="prev-btn">Câu trước</button>
-            <button id="next-btn">Câu tiếp</button>
-        </div>
-        <div class="question-map">
-            <p>Sơ đồ câu hỏi:</p>
-            <div id="question-list"></div>
-        </div>
-    </main>
+    <!-- Phần nút "Bắt đầu bài thi" -->
+    <div id="start-screen" style="text-align: center; margin-top: 20%;">
+        <button id="start-exam-btn" style="padding: 10px 20px; font-size: 16px;">Bắt đầu bài thi</button>
+    </div>
+
+    <!-- Phần giao diện bài thi (ban đầu ẩn) -->
+    <div id="exam-screen" style="display: none;">
+        <header>
+            <div class="info">
+                <p id="time">Thời gian còn lại: 60:00</p>
+                <button id="submit-btn">Nộp bài</button>
+            </div>
+        </header>
+        <main>
+            <div class="navbar">
+                
+            </div>
+            <div class="question">
+                <p id="question-text"><strong>Câu 1:</strong> Nội dung câu hỏi sẽ xuất hiện ở đây</p>
+                <form id="answer-form"></form>
+            </div>
+            <div class="navigation">
+                <button id="prev-btn">Câu trước</button>
+                <button id="next-btn">Câu tiếp</button>
+            </div>
+            <div class="question-map">
+                <p>Sơ đồ câu hỏi:</p>
+                <div id="question-list"></div>
+            </div>
+        </main>
+    </div>
+
     <script>
+        // Chặn quay lại trang trước
+        (function() {
+            window.history.pushState(null, "", window.location.href);
+            window.addEventListener("popstate", function() {
+                window.history.pushState(null, "", window.location.href);
+            });
+        })();
+
+        // Hàm bật chế độ toàn màn hình
+        function openFullscreen() {
+            let elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) {
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) {
+                elem.msRequestFullscreen();
+            }
+        }
+
+        // Hàm kiểm tra nếu người dùng thoát toàn màn hình
+        let fullscreenExitCount = 0;
+        function checkFullscreen() {
+            if (!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
+                if (allowExitFullscreen) return;
+                fullscreenExitCount++;
+                if (fullscreenExitCount === 1) {
+                    alert("Bạn đã thoát khỏi toàn màn hình, vi phạm quy chế thi. Kết quả của bạn đã bị hủy!");
+                    localStorage.setItem("mathResult", JSON.stringify({ correct: 0, total: 0, time: 0 }));
+                    localStorage.setItem("literatureResult", JSON.stringify({ correct: 0, total: 0, time: 0 }));
+                    localStorage.setItem("scienceResult", JSON.stringify({ correct: 0, total: 0, time: 0 }));
+                    window.location.href = "results.html";
+                }
+            }
+        }
+
+        // Xử lý khi nhấn nút "Bắt đầu bài thi"
+        document.getElementById("start-exam-btn").addEventListener("click", function() {
+            // Ẩn nút "Bắt đầu bài thi" và hiển thị giao diện bài thi
+            allowExitFullscreen = false;
+            document.getElementById("start-screen").style.display = "none";
+            document.getElementById("exam-screen").style.display = "block";
+
+            // Bật chế độ toàn màn hình
+            openFullscreen();
+
+            // Bắt đầu bài thi
+            startExam();
+        });
+
+        // Bắt đầu bài thi
+        function startExam() {
+            // Danh sách câu hỏi (giữ nguyên như ban đầu)
+            // Danh sách câu hỏi
         const questions = [
-            { text: "Ai là người cute nhất TG?", answers: ["NTT", "Gal Gadot", "QQ", "Trần Hà Linh"], correct: "A" },
-            { text: "Đâu là số nguyên tố đầu tiên?", answers: ["0", "2", "3", "5"], correct: "B" },
-            { text: "Kết quả của 2 + 2 là bao nhiêu?", answers: ["3", "5", "4", "6"], correct: "C" },
-            { text: "Câu lạc bộ nào vô địch Champions League nhiều nhất?", answers: ["Barcelona", "AC Milan", "Manchester United", "Real Madrid"], correct: "D" },
-            { text: "Tổng của các góc trong tam giác là bao nhiêu độ?", answers: ["360 độ", "90 độ", "180 độ", "120 độ"], correct: "C" },
-            { text: "Đơn vị đo của lực là gì?", answers: ["Newton", "Joule", "Pascal", "Watt"], correct: "A" },
-            { text: "Trái đất quay quanh trục bao lâu một vòng?", answers: ["12 giờ", "24 giờ", "30 giờ", "48 giờ"], correct: "B" },
-            { text: "Người sáng lập Microsoft là ai?", answers: ["Bill Gates", "Steve Jobs", "Elon Musk", "Jeff Bezos"], correct: "A" }
+            {
+                text: "Hàm số nào sau đây nghịch biến trong khoảng \\((-∞; 0)\\)?",
+                answers: [
+                    "\\(y = \\sqrt{2x^2 + 1}\\)",
+                    "\\(y = -\\sqrt{2x^2 + 1}\\)",
+                    "\\(y = \\sqrt{2(x+1)^2}\\)",
+                    "\\(y = -\\sqrt{2(x+1)^2}\\)"
+                ],
+                correct: "A"
+            },
+            {
+                text: "Xác định Parabol \\((P): y = ax^2 + bx + 2\\) biết rằng Parabol đi qua hai điểm \\(M(1; 5)\\) và \\(N(2; -2)\\).",
+                answers: [
+                    "\\(y = -5x^2 + 8x + 2\\)",
+                    "\\(y = 10x^2 + 13x + 2\\)",
+                    "\\(y = -10x^2 - 13x + 2\\)",
+                    "\\(y = 9x^2 + 6x - 5\\)"
+                ],
+                correct: "A"
+            },
+            {
+                text: "Với hình vuông A1B1C1D1 như hình vẽ bên, cách tô màu như phần gạch sọc được gọi là cách tô màu “đẹp”. Một nhà thiết kế tiến hành tô màu cho một hình vuông như hình bên, theo quy định sau: Bước 1: Tô màu 'đẹp' cho hình vuông A1B1C1D1. Bước 2: Tô màu 'đẹp' cho hình vuông A2B2C2D2 là hình vuông ở chính giữa khi chia hình vuông A1B1C1D1 thành 9 phần bằng nhau như hình vẽ. Bước 3: Tô màu 'đẹp' cho hình vuông A3B3C3D3 là hình vuông ở chính giữa khi chia hình vuông A2B2C2D2 thành 9 phần bằng nhau. Cứ tiếp tục như vậy. Hỏi cần đúng bao nhiêu bước để tổng diện tích phần được tô màu chiếm \\(\\frac{40}{81}\\) diện tích hình vuông ban đầu?",
+                answers: [
+                    "2",
+                    "4",
+                    "5",
+                    "6"
+                ],
+                correct: "A",
+                image: "Ảnh chụp màn hình 2024-12-27 183547.png"
+            },
+            {
+                text: "Tập hợp các giá trị của tham số m để hàm số \\(y = x^2 + (2m + 1)x - m + 3\\) nghịch biến trên khoảng \\((-∞, 2)\\) là",
+                answers: [
+                    "\\((-\\frac{5}{4}; +∞) \\)",
+                    "\\((-\\frac{5}{2}; +∞) \\)",
+                    "\\((\\frac{5}{4}; +∞) \\)",
+                    "\\((+∞; \\frac{5}{2}) \\)"
+                ],
+                correct: "D"
+            },
+            {
+                text: "Phương trình \\(mx^2 - 2mx + 4 = 0 \\) vô nghiệm khi và chỉ khi",
+                answers: [
+                    "\\(m \\in (0 ; 4) \\)",
+                    "\\(m < 0 \\) hoặc \\(m > 4 \\)",
+                    "\\(m \\in [0 ; 4 ] \\)",
+                    "\\(m \\in [0 ; 4) \\)"
+                ],
+                correct: "D"
+            },
+            {
+                text: "Một công ty chuyên sản xuất đĩa CD với chi phí mỗi đĩa là 40 (nghìn đồng). Theo nghiên cứu nếu mỗi đĩa bán với giá x (nghìn đồng) thì số lượng đĩa bán được sẽ là \\(q(x) = 120 - x \\), \\(x \\in N^* \\). Hãy xác định giá bán của mỗi đĩa sao cho lợi nhuận mà công ty thu được là cao nhất?",
+                answers: [
+                    "60 (nghìn đồng)",
+                    "70 (nghìn đồng)",
+                    "80 (nghìn đồng)",
+                    "90 (nghìn đồng)"
+                ],
+                correct: "C"
+            },
+            {
+                text: "Giới hạn \\(lim\\) \\(\\frac{3n - 1}{n + 2}\\) bằng",
+                answers: [
+                    "\\(+∞\\)",
+                    "0",
+                    "1",
+                    "3"
+                ],
+                correct: "D"
+            }
         ];
-        let currentQuestionIndex = 0;
-        let answers = new Array(questions.length).fill(null);
-        const questionText = document.getElementById("question-text");
-        const answerForm = document.getElementById("answer-form");
-        const questionList = document.getElementById("question-list");
-        const timeElement = document.getElementById("time");
 
-        function loadQuestion(index) {
-            const question = questions[index];
-            questionText.innerHTML = `<strong>Câu ${index + 1}:</strong> ${question.text}`;
-            answerForm.innerHTML = question.answers.map((answer, i) => `
-                <label>
-                    <input type="radio" name="answer" value="${String.fromCharCode(65 + i)}">
-                    ${answer}
-                </label><br>
-            `).join('');
-            const inputs = answerForm.querySelectorAll("input[name='answer']");
-            inputs.forEach(input => {
-                input.checked = input.value === answers[index];
-            });
-            updateQuestionMap();
-        }
+            let currentQuestionIndex = 0;
+            let answers = new Array(questions.length).fill(null);
+            const questionText = document.getElementById("question-text");
+            const answerForm = document.getElementById("answer-form");
+            const questionList = document.getElementById("question-list");
+            const timeElement = document.getElementById("time");
 
-        // Cập nhật sơ đồ câu hỏi
-        function updateQuestionMap() {
-            questionList.innerHTML = ""; // Xóa nội dung cũ
-            questions.forEach((_, index) => {
-                const button = document.createElement("button");
-                button.textContent = index + 1;
-                button.className = answers[index] ? "answered" : ""; // Tô màu nếu đã làm xong
-                button.addEventListener("click", () => {
-                    currentQuestionIndex = index;
-                    loadQuestion(currentQuestionIndex);
+            function loadQuestion(index) {
+                const question = questions[index];
+                let html = `<strong>Câu ${index + 1}:</strong> ${question.text}`;
+                if (question.image) {
+                    html += `<br><img src="${question.image}" alt="Hình minh họa" style="max-width:100%;height:auto;">`;
+                }
+                questionText.innerHTML = html;
+                answerForm.innerHTML = question.answers.map((answer, i) => `
+                    <label>
+                        <input type="radio" name="answer" value="${String.fromCharCode(65 + i)}">
+                        ${answer}
+                    </label><br>
+                `).join('');
+                const inputs = answerForm.querySelectorAll("input[name='answer']");
+                inputs.forEach(input => {
+                    input.checked = input.value === answers[index];
                 });
-                questionList.appendChild(button);
+
+                // Đảm bảo MathJax đã tải xong
+                MathJax.typesetPromise().then(() => {
+                    console.log("MathJax đã sẵn sàng!");
+                }).catch((err) => {
+                    console.error("Lỗi khi tải MathJax:", err);
+                });
+
+                updateQuestionMap();
+            }
+
+            function updateQuestionMap() {
+                questionList.innerHTML = "";
+                questions.forEach((_, index) => {
+                    const button = document.createElement("button");
+                    button.textContent = index + 1;
+                    button.className = answers[index] ? "answered" : "";
+                    button.addEventListener("click", () => {
+                        currentQuestionIndex = index;
+                        loadQuestion(currentQuestionIndex);
+                    });
+                    questionList.appendChild(button);
+                });
+            }
+
+            document.getElementById("next-btn").addEventListener("click", () => {
+                const selectedAnswer = answerForm.querySelector("input[name='answer']:checked");
+                if (selectedAnswer) {
+                    answers[currentQuestionIndex] = selectedAnswer.value;
+                }
+                if (currentQuestionIndex < questions.length - 1) {
+                    currentQuestionIndex++;
+                    loadQuestion(currentQuestionIndex);
+                } 
             });
+
+            document.getElementById("prev-btn").addEventListener("click", () => {
+                if (currentQuestionIndex > 0) {
+                    currentQuestionIndex--;
+                    loadQuestion(currentQuestionIndex);
+                } 
+            });
+
+            document.getElementById("submit-btn").addEventListener("click", () => {
+                const correctAnswers = answers.filter((ans, i) => ans === questions[i].correct).length;
+                const scienceResult = {
+                    correct: correctAnswers,
+                    total: questions.length,
+                    time: 60 * 60 - timeRemaining
+                };
+                localStorage.setItem("scienceResult", JSON.stringify(scienceResult));
+                allowExitFullscreen = true;
+                setTimeout(() => {
+                    window.location.href = "results.html";
+                }, 500);
+            });
+
+            let timeRemaining = 60 * 60;
+            const timer = setInterval(() => {
+                const minutes = Math.floor(timeRemaining / 60);
+                const seconds = timeRemaining % 60;
+                timeElement.textContent = `Thời gian còn lại: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                if (timeRemaining === 0) {
+                    clearInterval(timer);
+                    alert("Hết thời gian!");
+                    document.getElementById("submit-btn").click();
+                }
+                timeRemaining--;
+            }, 1000);
+
+            loadQuestion(currentQuestionIndex);
         }
 
-        // Nút "Câu tiếp"
-        document.getElementById("next-btn").addEventListener("click", () => {
-            const selectedAnswer = answerForm.querySelector("input[name='answer']:checked");
-            if (selectedAnswer) {
-                answers[currentQuestionIndex] = selectedAnswer.value;
-            }
-            if (currentQuestionIndex < questions.length - 1) {
-                currentQuestionIndex++;
-                loadQuestion(currentQuestionIndex);
-            } else {
-                alert("Bạn đã đến câu cuối!");
-            }
-        });
-
-        // Nút "Câu trước"
-        document.getElementById("prev-btn").addEventListener("click", () => {
-            if (currentQuestionIndex > 0) {
-                currentQuestionIndex--;
-                loadQuestion(currentQuestionIndex);
-            } else {
-                alert("Bạn đang ở câu đầu tiên!");
-            }
-        });
-        </script>
-<script>
-    document.getElementById("submit-btn").addEventListener("click", () => {
-        const totalQuestions = questions.length;
-        const correctAnswers = answers.filter((ans, i) => ans === questions[i].correct).length;
-
-        // Lưu dữ liệu tổng hợp vào localStorage
-        const scienceResult = {
-            correct: correctAnswers,
-            total: totalQuestions,
-            time: 60 * 60 - timeRemaining // Tổng thời gian làm bài của phần này
-        };
-        localStorage.setItem("scienceResult", JSON.stringify(scienceResult));
-
-        // Chuyển đến trang kết quả
-        window.location.href = "results.html";
-    });
-</script>
-<script>
-        // Đồng hồ đếm ngược
-        let timeRemaining = 60 * 60;
-        const timerElement = document.getElementById("time");
-        const interval = setInterval(() => {
-            const minutes = Math.floor(timeRemaining / 60);
-            const seconds = timeRemaining % 60;
-            timerElement.textContent = `Thời gian còn lại: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-            if (timeRemaining === 0) {
-    clearInterval(interval);
-    alert("Hết thời gian làm bài!");
-    const totalQuestions = questions.length;
-    const correctAnswers = answers.filter((ans, i) => ans === questions[i].correct).length;
-
-    // Lưu dữ liệu tổng hợp vào localStorage
-    const scienceResult = {
-        correct: correctAnswers,
-        total: totalQuestions,
-        time: 60 * 60 - timeRemaining // Tổng thời gian làm bài của phần này
-    };
-    localStorage.setItem("scienceResult", JSON.stringify(scienceResult));
-
-    // Chuyển đến trang kết quả
-    window.location.href = "results.html";
-}
-
-            timeRemaining--;
-        }, 1000);
-
-        // Hiển thị câu hỏi đầu tiên và sơ đồ
-        loadQuestion(currentQuestionIndex);
+        // Theo dõi sự kiện thoát khỏi chế độ toàn màn hình
+        document.addEventListener("fullscreenchange", checkFullscreen);
+        document.addEventListener("mozfullscreenchange", checkFullscreen);
+        document.addEventListener("webkitfullscreenchange", checkFullscreen);
+        document.addEventListener("msfullscreenchange", checkFullscreen);
     </script>
 </body>
 </html>

@@ -8,11 +8,12 @@
 </head>
 
 <body class="bgimg">
-    
     <main class="main-content">
         <header>
             <div class="logo">
-                <a href="https://thpt-tranphu-hatinh.edu.vn/"><img src="294340490_540262004555841_3980948053556117300_n-removebg-preview.png" alt="logo"></a>
+                <a href="https://thpt-tranphu-hatinh.edu.vn/">
+                    <img src="294340490_540262004555841_3980948053556117300_n-removebg-preview.png" alt="logo">
+                </a>
                 <h1>PHÒNG KHẢO THÍ GIÁO DỤC - TRƯỜNG THPT TRẦN PHÚ</h1>
             </div>
         </header>
@@ -40,9 +41,9 @@
                 <p><strong>Thời gian làm bài:</strong> 60 phút</p>
                 <p><strong>Dung lượng:</strong> 40 câu</p>
                 <p><strong>Thời gian thi:</strong> 15h20 - 16h20</p>
-                <button type="button" class="disabled" id="button3" disabled>Hiện chưa mở</button>    
+                <button type="button" class="disabled" id="button3" disabled>Hiện chưa mở</button>
+            </div>
         </div>
-        
     </main>
     <footer class="footer">
         <p>Copyright © 2021 by colonelMinh</p>
@@ -51,15 +52,30 @@
     <script>
         // Xóa toàn bộ dữ liệu trong localStorage khi bắt đầu vào trang
         localStorage.clear();
+
+        
+
+        
+
+        // Xử lý khi click vào nút "Hiện chưa mở" (nếu có)
         document.getElementById("button1").addEventListener("click", function() {
-            window.location.href = "math.html";
+            setTimeout(() => {
+                window.location.href = "math.html";
+            }, 500);
         });
         document.getElementById("button2").addEventListener("click", function() {
-            window.location.href = "literature.html";
+            setTimeout(() => {
+                window.location.href = "literature.html";
+            }, 500);
         });
+
         document.getElementById("button3").addEventListener("click", function() {
-            window.location.href = "science.html";
+            setTimeout(() => {
+                window.location.href = "science.html";
+            }, 500);
         });
+
+
     </script>
 </body>
 </html>

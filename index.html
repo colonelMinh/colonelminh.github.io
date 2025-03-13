@@ -39,6 +39,23 @@
             background-color: #ddd;
             color: black;
         }
+        .search-box {
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .search-box input[type="text"] {
+            padding: 10px;
+            width: 100%;
+            border: 2px solid #0066cc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .search-box input[type="text"]::placeholder {
+            color: #666;
+        }
         header {
             color: white;
             text-align: center;
@@ -62,6 +79,7 @@
         div.a {
             text-align: center;
         }
+        
         #myBtn {
             display: none; /* Ẩn nút khi trang web được tải */
             position: fixed; /* Vị trí cố định trên màn hình */
@@ -93,6 +111,8 @@
             <hr  width="100%" align="center" />
         </div>
     </a>
+</header>
+
 <body>
     <div class="navbar">
         <a href="#algorithm-web">Giao lưu giải thuật</a>
@@ -106,7 +126,9 @@
         <a href="story.html">Câu chuyện của Minh</a>
         <a href="#about">Về tôi</a>
     </div>
-           
+    <div class="search-box">
+        <input type="text" placeholder="Tìm kiếm..." name="search">
+    </div>
     <div class="bgimg">
         <div class="a" style="color:#000000">
             <font size="+3"> Trần Quang Minh </font>

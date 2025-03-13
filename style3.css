@@ -10,7 +10,7 @@ body {
 /* Header */
 header {
     font-family: 'Times New Roman', sans-serif;
-    background-color: #458ee1;
+    background-color: #000000;
     color: white;
     padding: 15px;
     text-align: center;
@@ -132,15 +132,18 @@ footer {
 }
 /* Sơ đồ câu hỏi */
 .question-map {
-    position: fixed;
-    top: 100px;
-    right: 20px;
+    position: fixed; /* Giữ vị trí cố định */
+    bottom: 20px; /* Cách đáy 20px */
+    right: 20px; /* Cách bên phải 20px */
     background-color: #fff;
     border: 1px solid #ddd;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 200px; /* Đặt chiều rộng cố định nếu cần */
+    z-index: 1000; /* Đảm bảo luôn nằm trên các phần tử khác */
 }
+
 
 .question-map p {
     font-weight: bold;

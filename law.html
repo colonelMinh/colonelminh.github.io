@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách kỳ thi</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+
+<body class="bgimg">
+    <main class="main-content">
+        <header>
+            <div class="logo">
+                <a href="https://thpt-tranphu-hatinh.edu.vn/">
+                    <img src="294340490_540262004555841_3980948053556117300_n-removebg-preview.png" alt="logo">
+                </a>
+                <h1>PHÒNG KHẢO THÍ GIÁO DỤC - TRƯỜNG THPT TRẦN PHÚ</h1>
+            </div>
+        </header>
+        <h2>Quy chế sử dụng trang web thi</h2>
+        <div class="exam-container">
+
+                
+            <p><li>Thí sinh tuyệt đối không thoát ra khỏi web thi khi chưa có sự đồng ý của cán bộ coi thi</li></p>                
+
+            <p><li>Nếu trang web gặp sự cố, vui lòng liên hệ ngay với cán bộ coi thi để được giải quyết</li></p>
+
+            <p><li>Trước khi nộp bài, ở câu hỏi cuối cùng thí sinh <strong>bắt buộc</strong> phải nhấn nút "Câu tiếp"</li></p>
+            <button type="button" class="register-btn" id="button1" >Làm bài thi</button>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>Copyright © 2021 by colonelMinh</p>
+        <p>Operated by Tran Phu HS | Powered by Minh</p>
+    </footer>
+    <script>
+        // Xóa toàn bộ dữ liệu trong localStorage khi bắt đầu vào trang
+        localStorage.clear();
+        document.getElementById("button1").addEventListener("click", function() {
+            setTimeout(() => {
+                window.location.href = "exam.html";
+            }, 500);
+        });
+
+
+    </script>
+</body>
+</html>
