@@ -39,23 +39,6 @@
             background-color: #ddd;
             color: black;
         }
-        .search-box {
-            margin: 20px auto;
-            max-width: 600px;
-        }
-
-        .search-box input[type="text"] {
-            padding: 10px;
-            width: 100%;
-            border: 2px solid #0066cc;
-            border-radius: 5px;
-            font-size: 16px;
-            box-sizing: border-box;
-        }
-
-        .search-box input[type="text"]::placeholder {
-            color: #666;
-        }
         header {
             color: white;
             text-align: center;
@@ -79,7 +62,6 @@
         div.a {
             text-align: center;
         }
-        
         #myBtn {
             display: none; /* Ẩn nút khi trang web được tải */
             position: fixed; /* Vị trí cố định trên màn hình */
@@ -97,6 +79,14 @@
         #myBtn:hover {
             background-color: #555; /* Màu nền khi hover */
         }
+        #fireworksCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 99999;
+            pointer-events: none;
+            mix-blend-mode: screen;
+        }
     </style>
     <meta property="og:title" content="Trần Quang Minh" />
     <meta property="og:description" content="Thông tin về Trần Quang Minh" />
@@ -111,8 +101,6 @@
             <hr  width="100%" align="center" />
         </div>
     </a>
-</header>
-
 <body>
     <div class="navbar">
         <a href="#algorithm-web">Giao lưu giải thuật</a>
@@ -126,9 +114,7 @@
         <a href="story.html">Câu chuyện của Minh</a>
         <a href="#about">Về tôi</a>
     </div>
-    <div class="search-box">
-        <input type="text" placeholder="Tìm kiếm..." name="search">
-    </div>
+           
     <div class="bgimg">
         <div class="a" style="color:#000000">
             <font size="+3"> Trần Quang Minh </font>
@@ -278,6 +264,102 @@
                 document.documentElement.scrollTop = 0; // Đối với Chrome, Firefox, IE và Opera
             }
         </script>
+        <canvas id="fireworksCanvas"></canvas>
+        <script>
+            // Hiệu ứng pháo hoa
+            const canvas = document.getElementById('fireworksCanvas');
+            const ctx = canvas.getContext('2d');
+    
+            function initCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+    
+            initCanvas();
+            window.addEventListener('resize', initCanvas);
+    
+            class Particle {
+                constructor(x, y, color) {
+                    this.x = x;
+                    this.y = y;
+                    this.color = color;
+                    this.size = Math.random() * 5 + 1;
+                    this.speedX = Math.random() * 4 - 2;
+                    this.speedY = Math.random() * 4 - 2;
+                    this.life = Math.random() * 30 + 50;
+                }
+    
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    this.size *= 0.96;
+                    this.life--;
+                }
+    
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                }
+            }
+    
+            const particles = [];
+            const colors = ['#ff5733', '#33ff57', '#5733ff', '#f4ff33', '#ff33e3'];
+    
+            function createFireworks(x, y) {
+                for (let i = 0; i < 50; i++) {
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    particles.push(new Particle(x, y, color));
+                }
+            }
+    
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach((particle, index) => {
+                    if (particle.life <= 0 || particle.size <= 0.1) {
+                        particles.splice(index, 1);
+                    } else {
+                        particle.update();
+                        particle.draw();
+                    }
+                });
+                requestAnimationFrame(animate);
+            }
+    
+            // Tạo pháo hoa theo di chuyển chuột
+            document.addEventListener('mousemove', (e) => {
+                createFireworks(e.clientX, e.clientY);
+            });
+    
+            animate();
+        </script>
+                <script>
+                    // Chặn tổ hợp phím F12, Ctrl + U, Ctrl + Shift + I
+                    document.addEventListener('keydown', function(event) {
+                      // Chặn F12
+                      if (event.key === 'F12') {
+                        event.preventDefault();
+                        alert("Chức năng này đã bị vô hiệu hóa!");
+                      }
+                      // Chặn Ctrl + U
+                      if (event.ctrlKey && (event.key === 'u' || event.key === 'U')) {
+                        event.preventDefault();
+                        alert("Chức năng này đã bị vô hiệu hóa!");
+                      }
+                      // Chặn Ctrl + Shift + I
+                      if (event.ctrlKey && event.shiftKey && (event.key === 'i' || event.key === 'I')) {
+                        event.preventDefault();
+                        alert("Chức năng này đã bị vô hiệu hóa!");
+                      }
+                    });
+                  
+                    // Chặn chuột phải
+                    document.addEventListener('contextmenu', function(event) {
+                      event.preventDefault();
+                      alert("Chuột phải đã bị vô hiệu hóa!");
+                    });
+                  </script>
         <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
     </div>
 </body>
